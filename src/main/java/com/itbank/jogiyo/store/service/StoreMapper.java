@@ -22,7 +22,7 @@ import com.itbank.jogiyo.dto.StoreDTO;
 
 
 @Service
-	//service
+
 public class StoreMapper {
 
 	@Autowired
