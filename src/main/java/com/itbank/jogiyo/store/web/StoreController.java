@@ -108,9 +108,9 @@ public class StoreController {
 		List<StoreDTO> slist = storemapper.getStore(authentication.getName());
 		req.setAttribute("getStore",slist);
 	
-		//이미지처리도해야됨
+		
 		return "store/ListStore";
-		//세션에있는 아이디값으로 storeDTO값 받아오기
+		
 	}
 	@RequestMapping("/store/Myinfo.do")
 		public String MyInfo(HttpServletRequest req) {
