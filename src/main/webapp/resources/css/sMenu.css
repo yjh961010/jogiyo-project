@@ -1,0 +1,105 @@
+@charset "UTF-8";
+<style>
+        body {
+            font-family: 'Gothic A1', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .store-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .toolbar {
+    width: 150px;
+    background-color: #f1f1f1;
+    padding: 15px 0;
+    height: 100%; /* 컨테이너 전체 높이에서의 비율 설정 */
+    overflow-y: auto; /* 스크롤이 필요한 경우에만 스크롤 표시 */
+        }
+        .toolbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toolbar ul li {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .toolbar ul li a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .toolbar ul li a:hover {
+            background-color: #ccc;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fa0050;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        table form button {
+            background-color: #fa0050;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin: 4px; /* 버튼 사이 간격 */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            margin-top: 20px;
+        }
+
+        .button a {
+            display: inline-block;
+            background-color: #fa0050;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .button a:hover {
+            background-color: #cc0033;
+        }
+    </style>

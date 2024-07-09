@@ -1,0 +1,62 @@
+@charset "UTF-8";
+.my-page-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* 제목 */
+.my-page-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 폼 레이아웃 */
+.my-page-form {
+    margin-top: 20px;
+}
+
+/* 레이블 */
+.my-page-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* 입력 필드 */
+.my-page-input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* 버튼 */
+.my-page-button,
+input[type="button"] {
+    padding: 10px 20px;
+    background-color: #fa0050;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.my-page-button:hover,
+input[type="button"]:hover {
+    background-color: #ff0a5f;
+}
+
+/* 메시지 */
+.my-page-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}

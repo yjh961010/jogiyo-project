@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #white;
+    margin: 0;
+    padding: 0;
+    color: #white;
+}
+.store-container2 {
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     min-height: 100vh;
+
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    color: #white;
+}
+h1 {
+    color: #fa0050;
+    margin-bottom: 20px;
+    font-weight: bold;  
+    font-family: 'Gothic A1';
+}
+.pagination {
+    margin: 20px 0;
+    text-align: center;
+}
+.pagination a {
+    color: #555;
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+.pagination a.active {
+    background-color: #fa0050;
+    color: white;
+    border: 1px solid #fa0050;
+}
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+.review-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.review-item {
+    list-style: none;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.review-item:last-child {
+    border-bottom: none;
+}
+.review-content {
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+.review-content h3, .review-content p {
+    margin: 10px 0;
+}
+.review-content img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.star-rating {
+    margin-top: 10px;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating label {
+    color: #ffd700;
+    font-size: 20px;
+}
+.reply {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #fa0050;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #d90445;
+}
+td button {
+    background-color: #fa0050;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+}
+.form-container {
+    display: none;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+        
+.form-container textarea {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+.form-container input[type="submit"], .form-container input[type="button"] {
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+.store-container2 {
+    display: flex;
+    flex-direction: row; /* 기본 방향을 가로로 설정 */
+    justify-content: center; /* 가운데 정렬 */
+    align-items: flex-start; /* 세로 방향 정렬을 위해 flex-start 설정 */
+    height: 100vh; /* 화면 전체 높이 사용 */
+
+    /* 추가적으로 필요한 스타일들 */
+}
+.toolbar {
+     width: 150px;
+     background-color: #f1f1f1;
+     padding: 15px 0;
+     height: 100%;
+     overflow-y: auto;
+}
+
+.toolbar ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+}
+
+.toolbar ul li {
+     text-align: center;
+     margin-bottom: 10px;
+}
+.toolbar ul li a {
+     display: block;
+     padding: 10px;
+     color: black;
+     text-decoration: none;
+}

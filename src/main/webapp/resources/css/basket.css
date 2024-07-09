@@ -1,0 +1,118 @@
+@charset "UTF-8";
+* {margin:0; padding: 0;}
+ul li {list-style: none;}
+a {text-decoration: none; color: inherit;}
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+	margin: 0;
+	padding: 20px;
+}
+.quantity_div {display: flex; justify-content:center; align-items: center;}
+	.quantity_div .quantity_input {width: 30px; border: none; outline: none; text-align: center;}
+	.quantity_div .quantity_modify_btn {margin-left: 6px; display: inline-block; border: 1px solid #ccc; border-radius: 4px; padding: 0 4px;}
+	.quantity_div .quantity_btn {border: none; background: transparent; font-size: 18px;}
+	
+
+
+.order-table-container {
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 1200px;
+	margin: auto;
+}
+
+.order-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.order-table th, .order-table td {
+	padding: 12px;
+	text-align: left;
+	border-bottom: 1px solid #dddddd;
+	text-align: center;
+}
+
+.order-table th {
+	background-color: #f2f2f2;
+}
+
+.actions button {
+	padding: 8px 10px;
+	background-color: #fa006c;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 90px;
+}
+
+.actions button:disabled {
+	background-color: #cccccc;
+}
+
+.order-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.order-header h2 {
+	margin: 0;
+	font-size: 20px;
+}
+
+.order-header span {
+	font-size: 14px;
+	color: #fa006c;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.table_text_align_center {
+	text-align: center;
+}
+
+caption {
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+}
+
+th {
+	text-align: center;
+	color: #333;
+	border-bottom: 1px solid #e7e7e7;
+	background: #f4f9fd;
+	padding: 2px 0;
+}
+
+.td_width_1 {
+	text-align: center;
+	width: 5%;
+}
+
+.td_width_2 {
+	text-align: center;
+	width: 10%;
+}
+
+.td_width_3 {
+	text-align: center;
+	width: 25%;
+}
+
+.td_width_4 {
+	text-align: center;
+	width: 15%;
+}
