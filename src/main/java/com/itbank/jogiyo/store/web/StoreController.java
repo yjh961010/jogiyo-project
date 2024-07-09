@@ -100,7 +100,7 @@ public class StoreController {
 		
 		}
 		return mav;
-		//가게 추가 
+		
 	}
 	@RequestMapping("/store/ListStore.do")
 	public String ListStore(HttpServletRequest req) {	
