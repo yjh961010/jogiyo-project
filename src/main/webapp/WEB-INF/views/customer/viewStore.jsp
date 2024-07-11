@@ -468,7 +468,7 @@ input.check_btn:checked + label:before{
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <!--<input type="hidden" id="sub" name="sub">
              <input type="hidden" id="sub2" name="sub2" value="${store.storename}"> -->
-            
+            </form>
     		
        
     </div>

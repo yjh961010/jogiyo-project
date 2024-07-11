@@ -8,28 +8,192 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-    .menu-item {
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin-bottom: 10px;
-        background-color: #f9f9f9;
+
+.order-table-container {
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 1200px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.order-header h2 {
+        font-size: 28px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        
     }
+.order-table {
+	width: 80%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.order-table th, .order-table td {
+	padding: 12px;
+	text-align: left;
+	border-bottom: 1px solid #dddddd;
+	text-align: center;
+} 
+	.menu-wrap{
+	padding: 30px;
+    	background-color: #fff;
+    	text-align: left;
+    	 height: 200px;
+    	 display: flex;
+	    align-items: flex-start;
+	    width: 70%;
+	    flex-direction: column;
+	    justify-content: center;
+	        overflow-y: auto;
+	        border: 1px solid #e3e3e3;
+	}
+ .menu-item {
+    font-size: 18px;
+    word-spacing: 20px;
+    margin-bottom: 15px;
+    position: relative;
+     margin-left: 10px;
+}
+
+.menu-item:last-child {
+    margin-bottom: 0px;
+}
+
+.menu-item p:last-child {
+    margin: 0px;
+}
+.menu-item p{
+   
+}
+.menu-item p::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 9px;
+    transform: translateY(50%);
+    left: 0;
+    width: 3px;
+    height: 3px;
+    background-color: #333;
+    margin-left:-10px;
+}
+
     #orderList {
         width: 80%;
         margin: 0 auto;
+       	display:flex;
+       	align-items: center;
+    justify-content: center;
+    }
+    .total-wrap{
+    background-color: #fa0050;
+    padding:20px;
+    height: 200px;
+     width: 30%;
+     display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+    }
+	 .coupon-info {
+        font-size: 16px;
+        color: #fff;
+        opacity: 0.8;
+        margin-bottom: 10px;
+    }
+     .total-amount {
+        font-size: 20px;
+        margin-top: 20px;
+        color:#fff;
+    }
+    .total-amount strong{
+    	font-weight: bold;
+    }
+    .form-group-wrap{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        background-color: #f9f9f9;
+        padding: 30px 20px;
+        /* border: 1px solid #eeeeee; */
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .form-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-field, .button-field {
+        height: 40px;
+        border-radius: 0px;
+        padding: 0 10px;
+        margin: 5px;
+    }
+
+    .input-field {
+        width: 180px;
+        min-width: 100px;
+        border: 1px solid #ccc;
+    }
+
+    .button-field {
+        background: #646464;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        padding: 0 20px;
+        margin-right: 30px;
+        transition: all 0.5s;
+    }
+
+    .button-field:hover {
+        background: #525252;
+    }
+    .button-pay{
+        font-weight: bold;
+        min-width: 100px;
+        background: #fa0050; 
+        margin-right: 0;
+        margin-bottom: 20px;
+    } 
+    .button-pay:hover {
+        background: #e00047; 
     }
 </style>
 
-<div align="center">
-    <h2>결제 페이지</h2>
+
+<div align="center" class="order-table-container">
+     <div class="order-header">
+            <h2>주문서</h2>
+        </div>
+          
     <div id="orderList"></div>
-    <input type="text" name="postcode" id="postcode" placeholder="우편번호" title="우편번호">
-    <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-    <input type="text" name="address" id="address" placeholder="주소" title="주소">
-	<input type="text" name="detailaddress" id="detailAddress" placeholder="상세주소" title="상세주소">
-    <input type="text" name="extraaddress" id="extraAddress" placeholder="참고항목" title="참고항목">
-    <button type="button" onclick="Pay()" style="background:#fee500; color:#000; border-radius:12px; padding: 10px 20px;">결제하기</button>
+    <div class="form-group-wrap">
+        <div class="form-group">
+            <input type="text" name="postcode" id="postcode" placeholder="우편번호" title="우편번호" class="input-field">
+            <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="button-field">
+        </div>
+        <div class="form-group">
+            <input type="text" name="address" id="address" placeholder="주소" title="주소" class="input-field">
+        </div>
+        <div class="form-group">
+            <input type="text" name="detailaddress" id="detailAddress" placeholder="상세주소" title="상세주소" class="input-field">
+        </div>
+        <div class="form-group">
+            <input type="text" name="extraaddress" id="extraAddress" placeholder="참고항목" title="참고항목" class="input-field">
+        </div>
+        <button type="button" onclick="Pay()" class="button-field button-pay">결제하기</button>
+    </div>
+   
 </div>
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 
@@ -99,29 +263,42 @@ $(function() {
         
         console.log("Coupon Amount:", couponAmount); // 쿠폰 금액 확인
 
+     // 전체 주문 데이터를 감싸는 wrap div를 생성
+        let menuWrapDiv = document.querySelector('.menu-wrap');
+        if (!menuWrapDiv) {
+            menuWrapDiv = document.createElement('div');
+            menuWrapDiv.className = 'menu-wrap';
+            orderListDiv.appendChild(menuWrapDiv);
+        }
+
+        // 전체 주문 데이터를 처리
         orderData.forEach(item => {
             console.log("Processing item:", item);
+
+            // 각 메뉴 항목을 담는 div 생성
             const menuItemDiv = document.createElement('div');
             menuItemDiv.className = 'menu-item';
             menuItemDiv.innerHTML = `
-                <p>메뉴 이름:` + item.menuname + `</p>
-                <p>메뉴 ID:` + item.menuid + `</p>
-                <p>가격:` + item.totprice + `원</p>
-                <p>수량:` + item.qty + `</p>
+                <p>`+ item.menuname + ` `+ item.qty + `개 `+ item.totprice +`원</p>
             `;
-            orderListDiv.appendChild(menuItemDiv);
 
+            // menu-wrap div에 menu-item div 추가
+            menuWrapDiv.appendChild(menuItemDiv);
+
+            // 총 금액 계산
             totalAmount += parseInt(item.totprice) * parseInt(item.qty);
         });
+
 
      // 쿠폰 적용 금액 계산
         totalAmount -= couponAmount;
         console.log("Total Amount after coupon:", totalAmount);
 
-        // 총 주문 금액 표시
+        // 총 주문 금액 표시 
         const totalDiv = document.createElement('div');
-        totalDiv.innerHTML = `<h4>쿠폰 적용 : `+couponAmount+`원</h4>
-                            <h3>총 주문 금액: `+totalAmount+`원</h3>`;
+        totalDiv.className = 'total-wrap';
+        totalDiv.innerHTML = ` <div class="coupon-info"> 쿠폰 적용 : `+couponAmount+`원 </div>
+        <div class="total-amount">총 주문 금액: <strong>`+totalAmount+`</strong>원</div>`;
         orderListDiv.appendChild(totalDiv);
     } else {
         document.getElementById('orderList').innerHTML = '<p>주문 데이터가 없습니다.</p>';
@@ -129,6 +306,9 @@ $(function() {
 });
 
     function Pay() {
+    	if(document.getElementById("postcode").value == "" || document.getElementById("address").value == ""){
+			alert('주소를 먼저 입력해주세요!')
+		}else{
         let itemsObject = {};
         let totalAmount = 0;
 
@@ -183,13 +363,18 @@ $(function() {
                 alert('결제 성공');
                 //window.location.href = "/customer/pastOrder.do";
                 addOrder(itemsObject);
+             // couponData에서 usercid 가져오기
+                if (couponData && couponData.length > 0 && couponData[0].usercid) {
+                    let usercid = couponData[0].usercid;
+                    useCouponDel(usercid);  // 쿠폰 사용 함수 호출 시 usercid 전달
+                }
             } else {
                 alert('결제에 실패하였습니다: ' + rsp.error_msg);
             }
         });
     }
     
-    
+    }
     
     function addOrder(itemsObject) {
     	 let orderData = [];
@@ -235,6 +420,30 @@ $(function() {
     	        }
     	    });
     	}
+    
+    function useCouponDel(usercid) {
+    	console.log(usercid);
+        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+        $.ajax({
+            url: "useCoupon.ajax",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ usercid: usercid }),
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(csrfHeader, csrfToken);
+            },
+            success: function(response) {
+                console.log('쿠폰 사용 데이터 전송 성공:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('쿠폰 사용 데이터 전송 실패:', error);
+                console.error('상태 코드:', xhr.status);
+                console.error('응답 텍스트:', xhr.responseText);
+            }
+        });
+    }
     
     
 </script>

@@ -83,8 +83,6 @@ public class StoreController {
 		if(uploadFile.uploadFile(dto.getFile())) {
 			dto.setImg(uploadFile.getFullName());
 			dto.setRun(1);
-			//0708추가
-			dto.setCouponid(0);
 		
 		}
 		System.out.println(dto.getPostcode()+","+dto.getAddress()+","+dto.getDetailaddress()+","+dto.getExtraaddress());
@@ -100,7 +98,7 @@ public class StoreController {
 		
 		}
 		return mav;
-		
+		//가게 추가 
 	}
 	@RequestMapping("/store/ListStore.do")
 	public String ListStore(HttpServletRequest req) {	
@@ -108,9 +106,9 @@ public class StoreController {
 		List<StoreDTO> slist = storemapper.getStore(authentication.getName());
 		req.setAttribute("getStore",slist);
 	
-		
+		//이미지처리도해야됨
 		return "store/ListStore";
-		
+		//세션에있는 아이디값으로 storeDTO값 받아오기
 	}
 	@RequestMapping("/store/Myinfo.do")
 		public String MyInfo(HttpServletRequest req) {
@@ -462,7 +460,7 @@ public class StoreController {
 		String storename = req.getParameter("storename");
 		int res = storemapper.deleteStore(storename);
 		if(res>0) {
-			req.setAttribute("url", "/store/ListStore.do");
+			req.setAttribute("url", "/store/storeInfo.do");
 			req.setAttribute("msg", "가게삭제완료");
 		}
 		return "message";
@@ -547,15 +545,15 @@ public class StoreController {
 				int daily_total=odto.getDaily_total();
 				jObject.addProperty("daily",daily);
 				jObject.addProperty("daily_total",daily_total);
-				System.out.println(daily);
-				System.out.println(daily_total);
+				//System.out.println(daily);
+				//System.out.println(daily_total);
 			}else if(hcount==1){
 				String month=odto.getDaily();
 				int monthly_total=odto.getDaily_total();
 				jObject.addProperty("month", month);
 				jObject.addProperty("monthly_total",monthly_total);
-				System.out.println(month);
-				System.out.println(monthly_total);
+				//System.out.println(month);
+				//System.out.println(monthly_total);
 			}
 			
 			jarray.add(jObject);

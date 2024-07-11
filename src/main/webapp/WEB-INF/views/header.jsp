@@ -47,17 +47,20 @@
 					src="${pageContext.request.contextPath}/resources/img/yogiyo.png"
 					style="width: 97.66px; height: 68.56px; vertical-align: bottom;">
 			</a></li>
+			<sec:authorize access="hasAnyRole('ROLE_1','ROLE_2')">
 			<li><a href="#">스토어</a>
 				<ul class="submenu">
 					<li><a
 						href="${pageContext.request.contextPath}/store/AddStore.do">스토어
 							추가하기</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/store/Myinfo.do">내
-							정보(점주)</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/customer/mypage.do">내정보
-							보기(일반사용자)</a></li>
+						href="${pageContext.request.contextPath}/store/ListStore.do">내
+							가게리스트</a></li>
+				</ul></li>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+				<li><a href="#">마이페이지</a>
+					<ul class="submenu">
 					<li><a
 						href="${pageContext.request.contextPath}/customer/pastOrder.do">과거
 							주문내역</a></li>
@@ -66,16 +69,14 @@
 					<li><a
 						href="${pageContext.request.contextPath}/customer/coupon.do">내쿠폰</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/store/ListStore.do">내
-							가게리스트</a></li>
-					<li><a href="${pageContext.request.contextPath}/store/test.do">맵</a></li>
-				</ul></li>
+						href="${pageContext.request.contextPath}/customer/mypage.do">내정보 보기</a></li>
+					<li><a href="${pageContext.request.contextPath}/customer/listDelivery.do">배달현황 보기</a></li>
+					</ul>
+				</li>
+				</sec:authorize>
 			<sec:authorize access="hasRole('ROLE_1')">
 				<li><a href="#">관리</a>
 					<ul class="submenu">
-						<li><a
-							href="${pageContext.request.contextPath}/admin/insertCate.do">카테고리
-								추가</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/admin/viewSales.do">매출현황
 								보기</a></li>
@@ -85,21 +86,12 @@
 						<li><a
 							href="${pageContext.request.contextPath}/admin/listAcc.do">사용자
 								관리</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/ownerList.do">점주 회원가입 목록</a></li>
 					</ul></li>
 			</sec:authorize>
-			<li><a
-				href="${pageContext.request.contextPath}/customer/mypage.do">내정보
-					보기</a></li>
-			<li><a href="${pageContext.request.contextPath}/customer/notice.do">공지사항 보기</a></li>		
-			<li><a href="${pageContext.request.contextPath}/customer/listDelivery.do">배달현황 보기</a></li>
+			<li><a href="${pageContext.request.contextPath}/customer/notice.do">공지사항 보기</a></li>
 		</ul>
-		<sec:authorize access="isAuthenticated()">
-			<sec:authentication property="principal.authorities"
-				var="authorities" />
-			<c:forEach items="${authorities}" var="authority">
-				<p>사용자의 권한: ${authority.authority}</p>
-			</c:forEach>
-		</sec:authorize>
 		<div class="login">
 			<sec:authorize access="isAuthenticated()">
 				<form method="post" action="/login/logout.do">
@@ -121,7 +113,7 @@
 			<p>배달받으실 동 이름으로 검색해주세요</p>
 			<div class="search-bar">
 				<button class="location-btn">
-					<img src="/images/loca.svg" alt="location icon">
+					<img src="${pageContext.request.contextPath}/resources/img/point.png" alt="location icon">
 				</button>
 				<form name="fffff" action="${pageContext.request.contextPath}/store/headerSearch.do" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

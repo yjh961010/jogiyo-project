@@ -150,6 +150,7 @@
           },
           error: function(xhr, status, error) {
               console.error('에러 발생:', error);
+              alert('인증번호가 전송되지 않았습니다! \n카카오 로그인 후 다시 전송해주세요')
           }
       });
    } 
@@ -200,17 +201,18 @@
             }
        }
    /* 인증번호 전송 버튼을 눌렀을때 click_div에 대한 값 사라짐, 나타남 */
-    function btnclick(){
+   /*  function btnclick(){
        const click_div = document.getElementById('click_div');
        if(click_div.style.display === 'none'){ /* click_div에 대한 요소 사라지게함 */
-          click_div.style.display = 'block';  /* 함수가 호출 되었을때 click_div에 대한 값 나타내지게하고 block */
-       }
-    }
-   function kakao_btn(){
+         // click_div.style.display = 'block';  /* 함수가 호출 되었을때 click_div에 대한 값 나타내지게하고 block */
+       //}
+   // }
+   
+   /* function kakao_btn(){
        const send = document.getElementById('send');
         document.getElementById("send").disabled = false;
-    }
-   
+    } */
+ 
 
 </script> 
 
@@ -221,79 +223,72 @@
    <form name="f1" method="post" onsubmit="return check()"
    action="/login/join_membership_ok.do" class="form-container">
    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-     <div align="center" style="margin-top: -5px; margin-bottom: 30px; border-radius: 8px;">
-   
-
-         <table>
-         <tr class="form-row">
-         <td>이름</td><td><input type="text" name="name" id="name" disabled></td>
-          </tr>
-         </table>
+     
          
-         <table style="position:relative; left:40px;">
-         <tr class="form-row" >
-         <td>아이디</td><td><input type="text" name="id" id="jid" title="아이디" disabled></td>
-           <td><input type="button" value="중복확인" id="dupli" style="margin-left: 20px;" onclick="idCheck()"></td>
-         </tr>
-         </table>
+        <div class="form-row" >
+           <div class="label-lo">이름</div>
+           <div class="input"><input type="text" name="name" id="name" disabled ></div>
+       </div>
          
-      <table style="position:relative; right:11px;">
-      <tr class="form-row">
-         <td>비밀번호</td>
-         <td><input type="password" name="passwd" id="pw" title="비밀번호" disabled></td>
-      </tr>
-      </table>
+         
+         <div class="form-row" >
+            <div class="label-lo" >아이디</div>
+             <div class="input"><input type="text" name="id" id="jid" title="아이디" disabled ></div>
+          <input type="button" value="중복확인" id="dupli"  onclick="idCheck()">
+        </div>
+        
+      <div class="form-row" >
+            <div class="label-lo" >비밀번호</div>
+            <div class="input"><input type="password" name="passwd" id="pw" title="비밀번호" disabled ></div>
+      </div>
       
-      <table style="position:relative; right:3px;">
-      <tr class="form-row">
-         <td>이메일</td>
-         <td><input type="text" name="mail" id="mail" title="이메일" disabled></td>
-      </tr>
-      </table>
+     <div class="form-row" >
+         <div class="label-lo" >이메일</div>
+         <div class="input"><input type="text" name="mail" id="mail" title="이메일" disabled></div>
+     </div>
       
-        <table style="position:relative; right:5px;">
-      <tr class="form-row">
-         <td>전화번호</td>
-         <td><input type="text" title="전화번호" name="phone1" id="p1" size="3" maxlength="3" disabled></td>
-         <td>-</td> 
-         <td><input type="text" title="전화번호" name="phone2" id="p2" size="3" maxlength="4" disabled></td>
-         <td>-</td> 
-         <td><input type="text" title="전화번호" name="phone3" id="p3" size="3" maxlength="4" disabled></td>
-      </tr>
-      </table>
+       <div class="form-row" >
+         <div class="label-lo" >전화번호</div>
+          <div class="input-lo">
+         <input type="text" title="전화번호" name="phone1" id="p1" size="3" maxlength="3" disabled> 
+         -
+         <input type="text" title="전화번호" name="phone2" id="p2" size="3" maxlength="4" disabled>
+        -
+        <input type="text" title="전화번호" name="phone3" id="p3" size="3" maxlength="4" disabled>
+           </div>
+     </div>
                         <!-- div값 나타나지 않게 하기 -->
-      <div id="click_div" style="display: none;">
+      <div>
       <table style="position:relative; left:35px;">
-      <tr class="form-row">
-         <td>인증번호</td>
-         <td><input type="text" name="code" id="code" placeholder="(필수)인증번호 입력"></td>
-         <td style="position:relative; left:5px;"><button type="button" onclick="out()">인증번호 확인</button></td>
-      </tr>
+      <div class="form-row">
+         <div class="label-lo" >인증번호</div>
+         <div class="input"><input type="text" name="code" id="code" placeholder="(필수)인증번호 입력"></div>
+        <button type="button" onclick="out()" id="dupli">인증번호확인</button>
+      </div>
         </table>
         <div id="message"></div> <!-- 인증이 완료됨, 인증실패 문구 출력 -->
         </div>
         
-      <table style="position:relative; top:10px;">
-      <tr>
-         <td style="position:relative; right:15px;"><input type="submit" value="확인" id="ok" disabled></td>
-         <td style="position:relative; left:35px;"><button type="button" style="width: 50px;" onclick="alert('로그인 페이지로 이동합니다.');
-            window.location.href='login.do';">취소</button></td>
-         <td style="position:relative; left:65px;">
-            <button type="button" onclick="sendToMe(); btnclick();" id="send">인증번호 전송</button></td>
-      </tr>
-      </table> 
+      <div class="buttons">
+         <input type="submit" value="확인" id="ok" disabled>
+         <button type="button" id="button-lo2" onclick="alert('로그인 페이지로 이동합니다.');
+            window.location.href='login.do';">취소</button>
+           <button type="button" id="button-lo2" onclick="sendToMe()" id="send">인증번호 전송</button>
+                                               <!-- btnclick(); -->
+      </div>
       
    <table style="position:relative; top:25px;">
       <tr>
-        <td><a href="https://kauth.kakao.com/oauth/authorize?client_id=faae190fd5bb60c910724b6781aeda60&redirect_uri=http://localhost:7080/login/join_membership.do&response_type=code&scope=talk_message"
-          onclick="kakao_btn()">
+        <td><a href="https://kauth.kakao.com/oauth/authorize?client_id=faae190fd5bb60c910724b6781aeda60&redirect_uri=http://localhost:7080/login/join_membership.do&response_type=code&scope=talk_message"> <!--  onclick="kakao_btn()" -->
          <img src="${pageContext.request.contextPath}/resources/img/kakao_login_medium_narrow.png"
                   alt="카카오 로그인"></a></td>
+                 
      </tr>
      </table>
-     </div>
+     
+        </form>
       </div>
       <div align="center" style="margin-bottom: 110px; border-radius: 8px;">
       </div>
-   </form>
+
 <jsp:include page="../footer.jsp" />

@@ -50,16 +50,20 @@
 					<td class="td_width_4"><span class="red_color"><fmt:formatNumber
 								value="${ba.totprice}" pattern="##,### 원" /></span><br></td>
 					 <td class="td_width_4 table_text_align_center delete_btn">
-                              <button onclick="deleteBasket(${ba.basketid})">삭제</button></td>
+                              <button onclick="deleteBasket(${ba.basketid})" class="button-field-del">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
+	</table>
+	<table class="order-table">
+		<td class="actions" >
+			<button onclick="viewStore(${storeid})" href="#">메뉴추가</button>
+		</td>
 	</table>
 	
 	<!-- 쿠폰 -->
          	
 				<table class="order-table"> 
-				 <h4>사용가능한 쿠폰</h4>
 				    <c:forEach items="${cCoupon}" var="co">
 				   
 				        <tr>
@@ -74,25 +78,26 @@
 				    </c:forEach>
 				</table>
     	<!-- 쿠폰 -->
-    
+    <div class="form-group-wrap">
+        <div class="form-group">
+            <input type="text" name="postcode" id="postcode" placeholder="우편번호" title="우편번호" class="input-field">
+            <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="button-field">
+        </div>
+        <div class="form-group">
+            <input type="text" name="address" id="address" placeholder="주소" title="주소" class="input-field">
+        </div>
+        <div class="form-group">
+            <input type="text" name="detailaddress" id="detailAddress" placeholder="상세주소" title="상세주소" class="input-field">
+        </div>
+        <div class="form-group">
+            <input type="text" name="extraaddress" id="extraAddress" placeholder="참고항목" title="참고항목" class="input-field">
+        </div>
+        <button type="button" onclick="Pay()" class="button-field button-pay">결제하기</button>
+    </div>
 <table class="order-table">
 	<tr>
-		<td>
-			<input type="text" name="postcode" id="postcode" placeholder="우편번호" title="우편번호">
-            <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-            <input type="text" name="address" id="address" placeholder="주소" title="주소">
-            <input type="text" name="extraaddress" id="extraAddress" placeholder="참고항목" title="참고항목">
-            <input type="text" name="detailaddress" id="detailAddress" placeholder="상세주소" title="상세주소">
-		</td>
-	<table class="order-table">
-		<td>
-			<button id="kaobtn" onclick="Pay()"
-				style="background: #fee500; color: #000; border-radius: 12px; padding: 10px 20px;">카카오페이</button>
-		</td>
-		<td class="actions">
-			<button onclick="viewStore(${storeid})" href="#">메뉴추가</button>
-		</td>
-	</table>
+		
+	
 	</tr>
 </table>
 </div>

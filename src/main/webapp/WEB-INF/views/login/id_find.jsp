@@ -222,10 +222,8 @@
       <p style="position:relative; top:40px; right:67px;">신고를 하고 싶으시다면 도움말을 참고해 주세요
       <a href="/login/service_center.do" id="under_two">도움말</a></p>
       </div>
-        </form>
       </div>
        <div align="center" style="margin-bottom: 110px; border-radius: 8px;">
-      
        </div>
-     
+      </form>
 <jsp:include page="../footer.jsp"/>

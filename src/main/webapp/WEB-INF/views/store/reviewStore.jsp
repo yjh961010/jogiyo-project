@@ -3,15 +3,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/star.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/reviewStore.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-<head>
-
-</head>
-<body>
 <div class="store-container2">
 <div class="toolbar">
         <ul>
-          
             <li><a href="/store/selectStore.do?storeid=${storeid}&storename=${storename}">주문목록</a></li>
             <li><a href="/store/reviewStore.do?storeid=${storeid}&storename=${storename}">리뷰관리</a></li>
             <li><a href="/store/storeMenu.do?storeid=${storeid}&storename=${storename}">메뉴관리</a></li>
@@ -22,10 +16,8 @@
             <li><a href="/store/addCoupon.do?storeid=${storeid}&storename=${storename}">쿠폰추가하기</a></li>
         </ul>
     </div>
-
-    
-<div class="container" style="display: flex;">
-
+ 
+    <div class="container" style="display: flex;">
     <div align="center" style="margin-top: 10px; width:70%;">
     <h1>리뷰관리 페이지</h1>
     <div align="center" style="margin-top: 40px;">
@@ -186,5 +178,3 @@
         }
     }
 </script>
-</body>
-</html>

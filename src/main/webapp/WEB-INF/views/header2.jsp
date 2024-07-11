@@ -43,20 +43,26 @@ function viewStore(id) {
 
 	<div class="header">
 		<ul class="menu">
-			<li><a 
-			href="${pageContext.request.contextPath}/">죠기요</a></li>       
-			<li><a 
-			href="#">스토어</a>
+			<li><a href="${pageContext.request.contextPath}/"
+				style="display: inline-block; /* block 대신 inline-block으로 변경 */ padding: 0;">
+					<img alt="main"
+					src="${pageContext.request.contextPath}/resources/img/yogiyo.png"
+					style="width: 97.66px; height: 68.56px; vertical-align: bottom;">
+			</a></li>
+			<sec:authorize access="hasAnyRole('ROLE_1','ROLE_2')">
+			<li><a href="#">스토어</a>
 				<ul class="submenu">
 					<li><a
 						href="${pageContext.request.contextPath}/store/AddStore.do">스토어
 							추가하기</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/store/Myinfo.do">내
-							정보(점주)</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/customer/mypage.do">내정보
-							보기(일반사용자)</a></li>
+						href="${pageContext.request.contextPath}/store/ListStore.do">내
+							가게리스트</a></li>
+				</ul></li>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+				<li><a href="#">마이페이지</a>
+					<ul class="submenu">
 					<li><a
 						href="${pageContext.request.contextPath}/customer/pastOrder.do">과거
 							주문내역</a></li>
@@ -65,40 +71,41 @@ function viewStore(id) {
 					<li><a
 						href="${pageContext.request.contextPath}/customer/coupon.do">내쿠폰</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/store/ListStore.do">내
-							가게리스트</a></li>
-					<li><a href="${pageContext.request.contextPath}/store/test.do">맵</a></li>
-				</ul></li>
-			<li><a href="#">관리</a>
-				<ul class="submenu">
-					<li><a
-						href="${pageContext.request.contextPath}/admin/insertCate.do">카테고리
-							추가</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/admin/viewSales.do">매출현황
-							보기</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/admin/notice.do">공지사항
-							추가</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/admin/listAcc.do">사용자
-							관리</a></li>
-				</ul></li>
-			<li><a
-				href="${pageContext.request.contextPath}/customer/mypage.do">내정보
-					보기</a></li>
-			<li><a href="${pageContext.request.contextPath}/customer/notice.do">공지사항 보기</a></li>	
+						href="${pageContext.request.contextPath}/customer/mypage.do">내정보 보기</a></li>
+					<li><a href="${pageContext.request.contextPath}/customer/listDelivery.do">배달현황 보기</a></li>
+					</ul>
+				</li>
+				</sec:authorize>
+			<sec:authorize access="hasRole('ROLE_1')">
+				<li><a href="#">관리</a>
+					<ul class="submenu">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/viewSales.do">매출현황
+								보기</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/notice.do">공지사항
+								추가</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/listAcc.do">사용자
+								관리</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/ownerList.do">점주 회원가입 목록</a></li>
+					</ul></li>
+			</sec:authorize>
+			<li><a href="${pageContext.request.contextPath}/customer/notice.do">공지사항 보기</a></li>
 		</ul>
-		<a href="#" onclick="viewStore(1)">가게보기테스트버튼</a>
 		<div class="login">
-			<c:if test="${empty jId}">
+			<sec:authorize access="isAuthenticated()">
+				<form method="post" action="/login/logout.do">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> <input type="submit" value="로그아웃"
+						class="login-btn">
+				</form>
+			</sec:authorize>
+			<sec:authorize access="isAnonymous()">
 				<button class="login-btn"
 					onclick="window.location.href='${pageContext.request.contextPath}/login/login.do'">로그인</button>
-			</c:if>
-			<c:if test="${not empty jId}">
-				<button class="login-btn"
-					onclick="window.location.href='${pageContext.request.contextPath}/login/logout.do'">로그아웃</button>
-			</c:if>
+			</sec:authorize>
 		</div>
 	</div>
  <img src="${pageContext.request.contextPath}/resources/img/yogiyo.png" alt="yogiyo">

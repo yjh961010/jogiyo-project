@@ -2,13 +2,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sMenu.css">
-
-
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
     <title>가게 메뉴관리페이지</title>
     
-
-
+</head>
+<body>
 <jsp:include page="../header.jsp"/>
 
 <div class="store-container">

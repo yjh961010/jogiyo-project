@@ -16,6 +16,8 @@ td button { /* 로그인, 비밀번호 찾기  */
 	background-color: #fa0050;
 	color: white;
 	border: none;
+	position:relative;
+	top: 30px;
 	padding-top: 4px; /* 위쪽 padding 설정 */
 	padding-bottom: 4px; /* 아래쪽 padding 설정 */
 	padding-left: 5px; /* 왼쪽 padding 설정 */
@@ -26,3 +28,52 @@ td button { /* 로그인, 비밀번호 찾기  */
 	display: block;
 	margin: 10px auto;
 }
+
+.form-container .pwupdate{
+	background-color: #fa0050;
+	width: calc(115% - 10px); /* 버튼 넓이 */;
+	color: white;
+	border: none;
+	position:relative;
+	top: 30px;
+	left: 30px;
+	padding-top: 4px; /* 위쪽 padding 설정 */
+	padding-bottom: 4px; /* 아래쪽 padding 설정 */
+	padding-left: 5px; /* 왼쪽 padding 설정 */
+	padding-right: 8px; /* 오른쪽 padding 설정 */
+	border-radius: 5px;
+	display: block;
+	cursor: pointer;
+	margin: 10px auto;
+}
+
+.form-container label{
+	font-size: 23px;
+	display: inline-block; /* 라벨을 인라인 블록 요소로 설정하여 세로 정렬 */
+    vertical-align: middle; /* 라벨을 체크박스와 세로 중앙 정렬 */
+    margin-left: 5px; /* 체크박스와 라벨 사이의 간격 조정 */
+    font-weight: bold; /* 라벨의 글꼴 두껍게 설정 */
+    font-family: 'Gothic A1', sans-serif; /* 라벨의 글꼴 설정 */
+    color: black; /* 라벨의 글자색 설정 */
+    position:relative;
+	top: 8px;
+   	
+}
+
+
+
+.form-container input[type="checkbox"] {
+    display: inline-block;; 
+    vertical-align: middle; /* 체크박스를 세로 중앙 정렬 */
+    position:relative;
+	right: 8px;
+    width: 18px;
+	height: 18px;
+}
+
+.form-container _div{
+	display: inline-block; /* 체크박스 뒤의 라벨을 인라인 블록 요소로 설정 */
+    margin-left: 5px; /* 체크박스와 라벨 사이의 간격 조정 */
+   	
+}
+

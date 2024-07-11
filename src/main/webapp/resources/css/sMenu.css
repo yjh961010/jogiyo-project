@@ -15,12 +15,12 @@
         }
 
         .toolbar {
-    width: 150px;
-    background-color: #f1f1f1;
-    padding: 15px 0;
-    height: 100%; /* 컨테이너 전체 높이에서의 비율 설정 */
-    overflow-y: auto; /* 스크롤이 필요한 경우에만 스크롤 표시 */
+            width: 200px;
+            background-color: #f1f1f1;
+            padding: 20px 10px;
+            overflow-y: auto;
         }
+
         .toolbar ul {
             list-style-type: none;
             padding: 0;

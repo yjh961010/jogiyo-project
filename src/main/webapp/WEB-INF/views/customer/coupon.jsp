@@ -13,8 +13,6 @@
                     <th>coupon name</th>
                     <th>coupon content</th>
                     <th>store</th>
-                    <th>사용기간?</th>
-                    
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +22,6 @@
 	                    <td>${coupon.couname}</td>
 	                    <td>${coupon.coucontent}</td>
 	                    <td>${coupon.storename}</td>
-	                    <td>기간 ~ </td>
                      </tr>
                 </c:forEach>
                     

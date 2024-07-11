@@ -4,9 +4,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-	function order() {
-		alert('주문 기능을 구현하세요.');
-	}
+	
 
 	function deleteBasket(basketid) {
         var form = document.createElement('form');
@@ -81,6 +79,9 @@
 		console.log(itemsObject);
 		 var couponNumber = getSelectedCouponContentNumber();
 		    var discountAmount = 0;
+		    var selectedCoupon = document.querySelector('input[name="coupon"]:checked');
+	        var usercid = selectedCoupon ? selectedCoupon.value : null;
+	        
 		    if (couponNumber) {
 		        discountAmount = parseInt(couponNumber); // 쿠폰의 숫자를 할인 금액으로 사용
 		        totalAmount -= discountAmount; // 총 결제 금액에서 할인 금액을 뺌
@@ -103,6 +104,7 @@
 			if (rsp.success) {
 				alert('결제 성공');
 				addOrder(itemsObject);
+				useCouponDel(usercid);
 			} else {
 				alert('결제에 실패하였습니다: ' + rsp.error_msg);
 			}
@@ -169,4 +171,29 @@
 	        }
 	    }).open();
 	}
+	
+	 function useCouponDel(usercid) {
+	    	console.log(usercid);
+	        var csrfToken = $("meta[name='_csrf']").attr("content");
+	        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+	        $.ajax({
+	            url: "useCoupon.ajax",
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify({ usercid: usercid }),
+	            beforeSend: function(xhr) {
+	                xhr.setRequestHeader(csrfHeader, csrfToken);
+	            },
+	            success: function(response) {
+	                console.log('쿠폰 사용 데이터 전송 성공:', response);
+	            },
+	            error: function(xhr, status, error) {
+	                console.error('쿠폰 사용 데이터 전송 실패:', error);
+	                console.error('상태 코드:', xhr.status);
+	                console.error('응답 텍스트:', xhr.responseText);
+	            }
+	        });
+	    }
+	
 </script>

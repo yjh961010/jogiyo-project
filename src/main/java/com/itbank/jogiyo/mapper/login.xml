@@ -32,7 +32,7 @@
 	</insert>
 	
 	<insert id="owner_membership_ok" parameterType="loginDTO">
-	insert into jaccount values(#{id}, #{passwd}, #{name}, #{mail}, #{phone}, 'ROLE_2')
+	insert into jaccount values(#{id}, #{passwd}, #{name}, #{mail}, #{phone}, 'ROLE_4')
 	</insert>
 	
 	<select id="checkId" resultType="int" parameterType="string">
