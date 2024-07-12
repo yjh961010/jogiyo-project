@@ -2,20 +2,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sMenu.css">
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>가게 메뉴관리페이지</title>
-    
-</head>
-<body>
 <jsp:include page="../header.jsp"/>
-
 <div class="store-container">
-    <div class="toolbar">
+<div class="toolbar">
         <ul>
-         
             <li><a href="/store/selectStore.do?storeid=${storeid}&storename=${storename}">주문목록</a></li>
             <li><a href="/store/reviewStore.do?storeid=${storeid}&storename=${storename}">리뷰관리</a></li>
             <li><a href="/store/storeMenu.do?storeid=${storeid}&storename=${storename}">메뉴관리</a></li>
@@ -26,25 +16,26 @@
             <li><a href="/store/addCoupon.do?storeid=${storeid}&storename=${storename}">쿠폰추가하기</a></li>
         </ul>
     </div>
-
     <div class="content">
-        <h1>가게 메뉴관리페이지</h1>
-        <div class="button">
-            <a href="/store/addMenu.do?storeid=${storeid}">메뉴추가</a>
+    <div align="center" style="margin-top: 10px;">
+    <h1 class="tool-h1" align="center">가게 메뉴관리페이지</h1>
+    <div style="text-align: center; ">
+        <div class="button2">
+            <a href="/store/addMenu.do?storeid=${storeid}">+메뉴 추가</a>
         </div>
-        <br><br>
-        <table>
+        <table align="center">
             <tr>
+                <th>메뉴사진</th>
                 <th>메뉴이름</th>
                 <th>카테고리</th>
                 <th>메뉴설명</th>
                 <th>메뉴가격</th>
-                <th>메뉴사진</th>
                 <th>수정/삭제</th>
                 <th>메뉴품절/재개</th>
             </tr>
             <c:forEach var="dto" items="${mlist}">
                 <tr>
+                    <td><img src="${pageContext.request.contextPath}/resources/img/${dto.img}" width="80" height="80"></td>
                     <td>${dto.menuname}
                         <c:if test="${dto.mqty==1}">[재고있음]</c:if>
                         <c:if test="${dto.mqty==0}">[품절]</c:if>
@@ -52,7 +43,6 @@
                     <td>${dto.jstorename}</td>
                     <td>${dto.menucontent}</td>
                     <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.price}"></fmt:formatNumber>￦</td>
-                    <td><img src="${pageContext.request.contextPath}/resources/img/${dto.img}" width="80" height="80"></td>
                     <td>
                         <form name="f" method="post" action="/store/editMenu.do" onsubmit="return confirm('메뉴 수정페이지로 이동합니다');">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -84,6 +74,4 @@
         </table>
     </div>
 </div>
-
-</body>
-</html>
+</div>

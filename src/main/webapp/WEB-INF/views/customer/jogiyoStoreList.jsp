@@ -32,7 +32,6 @@
                             <div class="reviews">리뷰  ${store.row_count} | 사장님댓글  ${store.reply_count}</div>
                             <div class="min_order">가게설명 | ${store.storecontent}</div>
                             <div class="discount">쿠폰 | ${store.couponid}</div>
-                            <div class="time">22-37분</div>
                         </div>
                     </div>
       		</c:if>
@@ -46,7 +45,6 @@
                             <div class="reviews">리뷰 ${store.row_count} | 사장님댓글  ${store.reply_count}</div>
                             <div class="min_order">가게설명 | ${store.storecontent}</div>
                             <div class="discount">쿠폰 | ${store.couponid}</div>
-                            <div class="time">22-37분</div>
                         </div>
                     </div>
       		</c:if>

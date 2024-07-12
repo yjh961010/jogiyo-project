@@ -17,6 +17,7 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico" type="image/x-icon">
 
 <script type="text/javascript">
 	function viewStore(id) {
@@ -108,18 +109,18 @@
 	</div>
 
 	<div class="search-section">
-		<div class="container">
+		<div class="header-container">
 			<h1><font style="font-weight:bold; color:white">어디로 <font style="color:orange">배달해</font> 드릴까요?</font></h1>
-			<p>배달받으실 동 이름으로 검색해주세요</p>
+			<p><font style="font-weight:bold; color:white">가게 이름이나 배달받으실 동 이름으로 검색해주세요</font></p>
 			<div class="search-bar">
-				<button class="location-btn">
-					<img src="${pageContext.request.contextPath}/resources/img/point.png" alt="location icon">
+				<button class="location-btn" style="background-image: url('${pageContext.request.contextPath}/resources/img/point.jpeg')">
+					<%-- <img src="${pageContext.request.contextPath}/resources/img/point.jpeg" alt="location icon"> --%>
 				</button>
 				<form name="fffff" action="${pageContext.request.contextPath}/store/headerSearch.do" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<input type="text" placeholder="배달받을 주소 혹은 가게이름을 검색해주세요" id="search-input" name="headerSearch" style="width:400px">
-				<input type="submit" value="검색" style="width:100px">
-				<input type="reset" value="취소" style="width:100px">
+				<input type="submit" value="검색" style="width:100px;">
+				<input type="reset" value="취소" style="width:100px;">
 				</form>
 				<%-- 
 				<div class="dropdown">
@@ -128,7 +129,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	  <div class="fixedBtn_wrap topBtn">
       <a href="${pageContext.request.contextPath}/customer/storeList.do" class="btn_fixedTicketing">주문하기</a>
       <a href="#" id="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동" /></a>

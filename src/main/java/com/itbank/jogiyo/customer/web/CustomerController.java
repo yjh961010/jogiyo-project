@@ -3,6 +3,7 @@ package com.itbank.jogiyo.customer.web;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -164,7 +165,7 @@ public class CustomerController {
 
 		StoreDTO dto = customerMapper.viewStore(storeid);
 		List<ViewStoreDTO> menuList = customerMapper.viewStoreInfo(storeid);
-		Map<String, List<ViewStoreDTO>> menuMap = new HashMap<>();
+		Map<String, List<ViewStoreDTO>> menuMap = new LinkedHashMap<>();
 		for (ViewStoreDTO menu : menuList) {
 			if (!menuMap.containsKey(menu.getJstorename())) {
 				menuMap.put(menu.getJstorename(), new ArrayList<>());

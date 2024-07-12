@@ -61,7 +61,25 @@
             return false;
          }
       }
+      if (!checkTel()) {
+          return false;
+      }
+
       return true;
+   }
+      function checkTel(){
+    	  var phone1 = document.getElementById('p1').value;
+    	  var phone2 = document.getElementById('p2').value;
+    	  var phone3 = document.getElementById('p3').value;
+    	  if (phone1.length !== 3 || phone2.length !== 4 || phone3.length !== 4 ||
+    		        isNaN(phone1) || isNaN(phone2) || isNaN(phone3)) {
+    		        alert("전화번호 형식을 지켜주세요");
+    		       
+    		        return false;
+    		    }
+
+    	return true;
+
    }
    </script>
    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
@@ -263,7 +281,7 @@
       <div class="form-row">
          <div class="label-lo" >인증번호</div>
          <div class="input"><input type="text" name="code" id="code" placeholder="(필수)인증번호 입력"></div>
-        <button type="button" onclick="out()" id="dupli">인증번호확인</button>
+        <button class="join_button" type="button" onclick="out()" id="dupli">인증번호확인</button>
       </div>
         </table>
         <div id="message"></div> <!-- 인증이 완료됨, 인증실패 문구 출력 -->

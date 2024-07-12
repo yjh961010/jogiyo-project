@@ -87,9 +87,6 @@ body {
     
 }
 
-.submenu > li {
-    display: block;
-}
 
 .menu > li:hover .submenu {
     display: block;
@@ -115,7 +112,7 @@ body {
    display: block;
 }
 
-.container {
+.header-container {
    text-align: center;
    padding: 20px;
 }
@@ -138,14 +135,12 @@ body {
    justify-content: center;
    align-items: center;
    margin: 20px 0;
-   position: relative;
 }
 
 .search-bar input {
    width: 300px;
    padding: 10px;
    font-size: 16px;
-   padding-right: 30px;
    border: 1px solid #ddd;
    border-radius: 5px;
 }
@@ -179,7 +174,7 @@ body {
 
 .search-bar button.location-btn {
    padding: 10px;
-   background-color: #ffffff;
+   background-color: transparent; /* 배경 색상을 투명으로 설정 */
    color: #ffffff;
    width: 40px;
    border: none;
@@ -189,6 +184,7 @@ body {
    display: flex;
    align-items: center;
    border-radius: 5px;
+   background-size: cover;
 }
 
 .location-btn img {

@@ -10,7 +10,7 @@
 
 
 
-<div align="center" style="margin-top: 20px; margin-bottom: 20px;">
+<div align="center" style="margin-top: 40px; margin-bottom: 20px;">
    <h1><span style="font-weight: bold; color:#fa0050; font-family: 'Gothic A1', sans-serif;">아이디 찾기</span></h1>
    <h4><span style="font-weight: bold; color:#black; font-family: 'Gothic A1', sans-serif;">이름과 전화번호를 입력해주세요.</span></h4>
    </div>
@@ -100,6 +100,8 @@
           },
           error: function(xhr, status, error) {
               console.error('에러 발생:', error);
+              alert('인증번호 전송 실패! 카카오 로그인 먼저 해주세요!');
+             /* 카카오 로그인을 하지 않고 인증번호 전송시 알림창이 뜸 */
           }
       });
    } 
@@ -146,84 +148,102 @@
        }
     
     /* 인증번호 전송 버튼을 눌렀을때 click_div에 대한 값 사라짐, 나타남 */
-    function btnclick(){
+   /*  function btnclick(){
        const click_div = document.getElementById('click_div');
        if(click_div.style.display === 'none'){ /* click_div에 대한 요소 사라지게함 */
-          click_div.style.display = 'block';  /* 함수가 호출 되었을때 click_div에 대한 값 나타내지게하고 block */
-       }
-    }
+          //click_div.style.display = 'block';  /* 함수가 호출 되었을때 click_div에 대한 값 나타내지게하고 block */
+       //}
+   // } */
    
     function show(){
        const con = document.getElementById('con');
-       if(con.style.display ==='none'){       
-            con.style.display = 'block';    
+       if(con.style.display ==='none' || con.style.display === ''){       
+            con.style.display = 'block';
+            document.getElementById('under').innerText = '상세내용 닫기';
         }else{       
-            con.style.display = 'none';    
+            con.style.display = 'none';
+            document.getElementById('under').innerText = '상세내용 펼치기';
         } 
        } 
     
+    function check() {
+        /* text 입력 안할 시 title에 대한 알림창이 나옴 */
+       const jfrm = document.f;
+        let length = jfrm.length - 5; // length에 버튼 값까지 포함  인증번호전송, 중복확인, 취소, 확인 까지 포함이라서 -4를 함
+        for (let i = 0; i < length; i++) {
+           if (jfrm[i].value == "" || jfrm[i].value == null) {
+              alert(jfrm[i].title + "을 입력해 주세요");
+              jfrm[i].focus();
+              return false;
+           }
+        }
+        return true;
+     }
+   
+   
 </script>  
    
-<div align="center" style="margin-top: 60px;">
-   <form name="f" method="post" action="/login/id_find_result.do" class="form-container">
+<div align="center" style="margin-top: 40px;">
+            <!-- return check()를 하면  위 유효성 검사가 false, true를 받기위해 -->
+   <form name="f" onsubmit="return check()" method="post" action="/login/id_find_result.do" class="form-container">
    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
      <div align="center" style="margin-top: -5px; margin-bottom: 30px; border-radius: 8px;">
 
-      <table>
-      <tr class="form-row">
-         <td>이름</td><td><input type="text" name="name" id="name" disabled></td>
-      </tr>
-      </table>
+      <div class="form-row">
+      <div class="label-lo">이름</div>
+      <div class="input"><input type="text" title="이름" name="name" id="name" disabled></div>
+      </div>
       
-      <table style="position:relative; right:5px;">
-      <tr class="form-row">
-         <td>전화번호</td>
-            <td><input type="text" name="phone1" id="p1" size="3" maxlength="3" disabled></td>
-            <td>-</td>
-            <td><input type="text" name="phone2" id="p2" size="3" maxlength="4" disabled></td>
-            <td>-</td>
-            <td><input type="text" name="phone3" id="p3" size="3" maxlength="4" disabled></td>
-      </tr>
-      </table>
-                     <!-- div값 나타나지 않게 하기 -->
-      <div id="click_div" style="display: none;">
+      <div class="form-row" >
+         <div class="label-lo" >전화번호</div>
+            <div class="input-lo">
+         <input type="text" name="phone1" id="p1" title="전화번호" size="3" maxlength="3" disabled>
+         -
+         <input type="text" name="phone2" id="p2" title="전화번호" size="3" maxlength="4" disabled>
+         -
+         <input type="text" name="phone3" id="p3" title="전화번호" size="3" maxlength="4" disabled>
+         </div>
+      </div>
+                     <!-- div값 나타나지 않게 하기 style="display: none; -->
+      
       <table style="position:relative; left:30px;">
-      <tr>
-         <td>인증번호</td>
-         <td><input type="text" name="code" style="width: 135px;" placeholder="(필수)인증번호 입력" id="code"></td>
-         <td style="position:relative; left:10px;"><button type="button" onclick="out()">인증번호 확인</button></td>
-      </tr>
-      </table>
-      <div id="message"></div>
+       <div class="form-row">
+         <div class="label-lo" >인증번호</div>
+         <div class="input"><input type="text" name="code"  placeholder="(필수)인증번호 입력" id="code"></div>
+         <button type="button" onclick="out()" id="dupli">인증번호확인</button>
       </div>
+        </table>
+        <div id="message"></div> <!-- 인증이 완료됨, 인증실패 문구 출력 -->
+        </div>
+     
       
-     <table style="position:relative; top:15px;">
-      <tr>
-         <td style="position:relative; right:15px;"><input type="submit" value="확인" id="ok" disabled></td>
-         <td style="position:relative; left:35px;"><button type="button" style="width: 50px;" onclick="alert('로그인 페이지로 이동합니다.');
-            window.location.href='login.do';">취소</button></td>
-            <td style="position:relative; left:65px;"><button type="button" onclick="sendToMe(); btnclick();" >인증번호 전송</button></td>
+     <div class="buttons">
+   
+         <input type="submit" value="확인" id="ok" disabled>
+         <button type="button" id="button-lo2" onclick="alert('로그인 페이지로 이동합니다.');
+            window.location.href='login.do';">취소</button>
+           <button type="button" id="button-lo2" onclick="sendToMe()" id="send">인증번호 전송</button>
+                                                               <!-- btnclick(); -->
             <!-- 버튼을 눌러 sendToMe()가 활성화가되면 나에게 랜덤값 코드 번호 전송  -->
-      </tr>
-      </table>
       
-      <table style="position:relative; top:30px;">
-      <tr>
-      <td><a href="https://kauth.kakao.com/oauth/authorize?client_id=1892f5fb59d85cadf550e26ec6d0855a&redirect_uri=http://localhost:7080/login/id_find.do&response_type=code&scope=talk_message">
-         <img src="${pageContext.request.contextPath}/resources/img/kakao_login_medium_narrow.png" alt="카카오 로그인"></a></td>
+      </div>
+      
+      <div class="form-img">
+      <a href="https://kauth.kakao.com/oauth/authorize?client_id=1892f5fb59d85cadf550e26ec6d0855a&redirect_uri=http://localhost:7080/login/id_find.do&response_type=code&scope=talk_message" class="center-img">
+         <img src="${pageContext.request.contextPath}/resources/img/kakao_login_medium_narrow.png" alt="카카오 로그인"></a>
          <!-- rest api와  redirect url을 request GET으로 보냄 -->
-      </tr>
-      </table>
       </div>
       
-      <p style="position:relative; top:40px; right:60px;">직접 가입하지 않은 아이디를 탈퇴(삭제)하고 싶으신가요?</p>
-      <a onclick="show()" id="under" style="position:relative; top:35px; right:178px;">상세내용 펼치기</a>
-      <div id="con" style="display: none;">
-      <p style="position:relative; top:40px; right:67px;">신고를 하고 싶으시다면 도움말을 참고해 주세요
-      <a href="/login/service_center.do" id="under_two">도움말</a></p>
+      <div>
+      <div class="delete">직접 가입하지 않은 아이디를 탈퇴(삭제)하고 싶으신가요?</div>
+      <div class="open"><a onclick="show()" id="under">상세내용 펼치기</a></div>
+      <div style="display: none;" id="con">
+      <div class="help">신고를 하고 싶으시다면 도움말을 참고해 주세요
+      <a href="/login/service_center.do" id="under_two">도움말</a></div>
       </div>
+      </div>
+      </form>
       </div>
        <div align="center" style="margin-bottom: 110px; border-radius: 8px;">
        </div>
-      </form>
 <jsp:include page="../footer.jsp"/>

@@ -17,7 +17,7 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
-
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico" type="image/x-icon">
 <script type="text/javascript">
 	function viewStore(id) {
 		var form = document.createElement('form');
@@ -116,27 +116,3 @@
       <a href="${pageContext.request.contextPath}/customer/storeList.do" class="btn_fixedTicketing">주문하기</a>
       <a href="#" id="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동" /></a>
     </div>
-	<script>
-		function clearSearch() {
-			document.getElementById('search-input').value = '';
-		}
-		document.addEventListener("DOMContentLoaded", function() {
-			const menuItems = document.querySelectorAll(".menu > li");
-
-			menuItems.forEach(function(menuItem) {
-				menuItem.addEventListener("mouseover", function() {
-					const submenu = this.querySelector(".submenu");
-					if (submenu) {
-						submenu.style.display = "block";
-					}
-				});
-
-				menuItem.addEventListener("mouseleave", function() {
-					const submenu = this.querySelector(".submenu");
-					if (submenu) {
-						submenu.style.display = "none";
-					}
-				});
-			});
-		});
-	</script>

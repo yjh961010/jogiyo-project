@@ -9,9 +9,8 @@
 
 
 <div class="store-container2">
-    <div class="toolbar">
+    <div class="toolbar" style="font-family: Arial, sans-serif;">
         <ul>
-           
             <li><a href="/store/selectStore.do?storeid=${storeid}&storename=${storename}">주문목록</a></li>
             <li><a href="/store/reviewStore.do?storeid=${storeid}&storename=${storename}">리뷰관리</a></li>
             <li><a href="/store/storeMenu.do?storeid=${storeid}&storename=${storename}">메뉴관리</a></li>
@@ -26,9 +25,9 @@
     <div class="content">
         <h1 class="tool-h1">주문목록 ${run}</h1>
 
-        <table class="table">
+        <table class="table" style="width: 80%;" align="center">
             <tr>
-                <th style="text-align: center;" class="th">고객id(phone)</th>
+                <th style="text-align: center;" class="th">고객id(콜)</th>
                 <th style="text-align: center;"  class="th">주문일자</th>
                 <th style="text-align: center;"  class="th">주문메뉴</th>
                 <th style="text-align: center;"  class="th">수량</th>
@@ -37,7 +36,7 @@
             </tr>
             <c:if test="${empty orderList}">
                 <tr>
-                    <th colspan="6" class="empty-message" ><br><br><br>최근 주문내역이 없습니다.</th>
+                    <th colspan="6" class="empty-message" ><br><br><br>최근 주문내역이 없습니다.<br><br><br><br></th>
                 </tr>
             </c:if>
             <c:forEach var="dto" items="${orderList}">
@@ -58,5 +57,3 @@
 </div>
 
 <jsp:include page="../footer.jsp"/>
-</body>
-</html>

@@ -7,8 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/stopStore.css">
 <div class="store-container2">
-	<div class="toolbar">
-	 <ul>
+   <div class="toolbar">
+    <ul>
            
             <li><a href="/store/selectStore.do?storeid=${storeid}&storename=${storename}">주문목록</a></li>
             <li><a href="/store/reviewStore.do?storeid=${storeid}&storename=${storename}">리뷰관리</a></li>
@@ -19,15 +19,15 @@
             <li><a href="/store/stopStore.do?storeid=${storeid}&storename=${storename}">가게일시정지</a></li>
             <li><a href="/store/addCoupon.do?storeid=${storeid}&storename=${storename}">쿠폰추가하기</a></li>
         </ul>
-	</div>
-	 
+   </div>
+    
 <div class="stop-container">
 <h1 class="tool-h1">가게일시중지</h1>
 <h3>-일시중지 유의사항-</h3>
 <label class="stop-label">▶일시중지기능은 <font style="color:red; font-weight: bold;"> 3일이내</font>만가능합니다.</label>
-	<label class="stop-label">▶당일 중지는 즉시중지를 사용해주세요.</label>
-	<label class="stop-label">※즉시중지: 중지를 누른시점에서  <font style="color:red; font-weight: bold;">24시간후 (분,초 올림) 정각</font>에 자동해제됩니다. 
-	<br>ex)2024-06-24 09:09 -> 2024-06-25 10:00</label>
+   <label class="stop-label">▶당일 중지는 즉시중지를 사용해주세요.</label>
+   <label class="stop-label">※즉시중지: 중지를 누른시점에서  <font style="color:red; font-weight: bold;">24시간후 (분,초 올림) 정각</font>에 자동해제됩니다. 
+   <br>ex)2024-06-24 09:09 -> 2024-06-25 10:00</label>
 
 <br>
 

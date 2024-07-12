@@ -69,8 +69,8 @@ public class LoginController {
         
         // 이름과 전화번호로 ID를 찾는 메서드를 호출합니다
         List<LoginDTO> find = loginmapper.id_find(params);
-        if (find!=null) {
-           List<LoginDTO> id = loginmapper.id_find(params);
+        if (find!=null  && !find.isEmpty()) { // List로 받아올때 사이즈 검사를 해야만 else문 발동?
+        List<LoginDTO> id = loginmapper.id_find(params);
          /* String id = find.getId(); */
          /* req.setAttribute("msg", "아이디를 찾았습니다!"); */
             req.setAttribute("id",id);
@@ -79,7 +79,7 @@ public class LoginController {
         } else {
             req.setAttribute("msg", "입력하신 정보와 일치하는 아이디가 없습니다.");
             req.setAttribute("url", "login.do");
-            return "message";
+            return "message";   
         }
     }
 

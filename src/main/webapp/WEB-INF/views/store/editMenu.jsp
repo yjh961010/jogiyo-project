@@ -14,8 +14,7 @@
 <body>
 <div class="store-container2">
     <div class="toolbar">
-        <ul>
-            
+         <ul>
             <li><a href="/store/selectStore.do?storeid=${storeid}&storename=${storename}">주문목록</a></li>
             <li><a href="/store/reviewStore.do?storeid=${storeid}&storename=${storename}">리뷰관리</a></li>
             <li><a href="/store/storeMenu.do?storeid=${storeid}&storename=${storename}">메뉴관리</a></li>
@@ -51,7 +50,7 @@
                     <td><input type="text" name="menuname" value="${getMenu[0].menuname}" title="메뉴이름"></td>
                 </tr>
                 <tr>
-                    <th>메뉴설명:</th>
+                    <th>가게설명:</th>
                     <td><textarea name="menucontent" title="메뉴설명">${getMenu[0].menucontent}</textarea></td>
                 </tr>
                 <tr>
@@ -59,11 +58,11 @@
                     <td><input type="text" name="price" title="메뉴가격" value="${getMenu[0].price}" pattern="\d*" title=",없이 숫자만 입력해주세요"></td>
                 </tr>
                 <tr>
-                    <th>기존 메뉴이미지:</th>
+                    <th>기존 가게이미지:</th>
                     <td><img src="${pageContext.request.contextPath}/resources/img/${getMenu[0].img}" width="80" height="80"></td>
                 </tr>
                 <tr>
-                    <th>메뉴이미지 수정하기:</th>
+                    <th>가게이미지 수정하기:</th>
                     <td><input type="file" name="file"></td>
                 </tr>
                 <tr>

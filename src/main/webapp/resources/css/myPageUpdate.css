@@ -2,16 +2,21 @@
 .my-page-container {
     max-width: 600px;
     margin: 50px auto;
-    background-color: #fff;
+    border-collapse: collapse; /* 테이블 또는, 셀의 테두리 선을 단선으로 나타냄 */
+    border: 1px solid #ddd; /* 테두리 1줄 회색으로 나타냄 */
+    background-color: #f9f9f9;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(1, 1, 1, 0.2);
 }
 
 /* 제목 */
 .my-page-title {
     text-align: center;
     margin-bottom: 20px;
+    color:#fa0050;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
 }
 
 /* 폼 레이아웃 */

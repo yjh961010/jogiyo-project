@@ -387,7 +387,6 @@ input.check_btn:checked + label:before{
     <input type="hidden" name ="storeid" value="${store.storeid}"/>
     <hr>
     <img src="${pageContext.request.contextPath}/resources/img/${store.img}">
-    <p>내용</p>
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Menu')" id="defaultOpen">메뉴</button>
         <button class="tablinks" onclick="openTab(event, 'Review')" id="reviewOpen">리뷰</button>
@@ -502,6 +501,7 @@ input.check_btn:checked + label:before{
         <c:forEach items="${review}" var="re">
             <li class="review-item">
                 <div class="review-content">
+                <img src="${pageContext.request.contextPath}/resources/img/${re.img}" style="width: 20%; height: 20%;">
                     <h2>${re.revcotent}</h2>
                     <c:if test="${not empty re.reply}">
                         <p class="reply">↳${re.reply}</p>

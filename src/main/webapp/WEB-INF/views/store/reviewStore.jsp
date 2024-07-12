@@ -17,10 +17,10 @@
         </ul>
     </div>
  
-    <div class="container" style="display: flex;">
-    <div align="center" style="margin-top: 10px; width:70%;">
+    <div class="container" >
+    <div style="margin-top: 10px; width:100%;">
     <h1>리뷰관리 페이지</h1>
-    <div align="center" style="margin-top: 40px;">
+    <div style="margin-top: 40px;">
     <c:if test="${empty rList}">
         <p>등록된 리뷰가 없습니다.</p>
     </c:if>
@@ -50,7 +50,7 @@
                             <h3>주문일자: ${dto.reviewdate}</h3>
                             <h2>리뷰내용: ${dto.revcotent}</h2>
                             <c:if test="${not empty dto.reply}">
-                                <p class="reply">⤷사장님댓글: ${dto.reply}</p>
+                                <p class="reply">⤷ 사장님댓글: ${dto.reply}</p>
                             </c:if>
                             <div class="star-rating">
                                 <fieldset>
@@ -62,15 +62,16 @@
                         </fieldset>
                                 <p>평점: ${dto.grade}</p>
                             </div>
-                        </div>
-                    </div>
-                    <c:if test="${empty dto.reply}">
+                            <c:if test="${empty dto.reply}">
                         <button onclick="showForm(${dto.reviewid})">댓글등록</button>
                     </c:if>
                     <c:if test="${not empty dto.reply}">
                         <button onclick="showForm2(${dto.reviewid})">댓글수정</button>
                         <button onclick="location.href='/store/deleteReview.do?reviewid=${dto.reviewid}&storeid=${dto.storeid}'">답글삭제</button><br>
                     </c:if>
+                        </div>
+                    </div>
+                    
                     <br>
                     <div id="myForm${dto.reviewid}" class="form-container" style="display: none;">
                         <h4>${empty dto.reply ? '댓글추가' : '댓글수정'}</h4>

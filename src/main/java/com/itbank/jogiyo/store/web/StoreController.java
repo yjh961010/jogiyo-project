@@ -114,14 +114,14 @@ public class StoreController {
 		public String MyInfo(HttpServletRequest req) {
 		return "store/MyInfo";
 	}
-	@RequestMapping("/store/test.do")
-		public String test(HttpServletRequest req) {
-		PropertyReader reader = new PropertyReader();
-		String key = reader.getProperty("kakao_key");
-		req.setAttribute("address", "서울 종로구 삼일대로 394");
-		req.setAttribute("key", key);
-		return "store/kakaomaptest";
-	}
+
+	/*
+	 * @RequestMapping("/store/test.do") public String test(HttpServletRequest req)
+	 * { PropertyReader reader = new PropertyReader(); String key =
+	 * reader.getProperty("kakao_key"); req.setAttribute("address",
+	 * "서울 종로구 삼일대로 394"); req.setAttribute("key", key); return
+	 * "store/kakaomaptest"; }
+	 */
 	@RequestMapping("/store/selectStore.do")
 		public String selectStore(HttpServletRequest req) {
 		String storename = req.getParameter("storename");
@@ -329,6 +329,7 @@ public class StoreController {
 		req.setAttribute("cateList", cateList);
 		req.setAttribute("getMenu", getMenu);
 		req.setAttribute("storename", storename);
+		req.setAttribute("storeid", storeid);
 		return "store/editMenu";
 	}
 	@RequestMapping(value="/store/editMenuPro.do" ,method=RequestMethod.POST)
@@ -460,7 +461,7 @@ public class StoreController {
 		String storename = req.getParameter("storename");
 		int res = storemapper.deleteStore(storename);
 		if(res>0) {
-			req.setAttribute("url", "/store/storeInfo.do");
+			req.setAttribute("url", "/store/listStore.do");
 			req.setAttribute("msg", "가게삭제완료");
 		}
 		return "message";
@@ -545,15 +546,15 @@ public class StoreController {
 				int daily_total=odto.getDaily_total();
 				jObject.addProperty("daily",daily);
 				jObject.addProperty("daily_total",daily_total);
-				//System.out.println(daily);
-				//System.out.println(daily_total);
+				System.out.println(daily);
+				System.out.println(daily_total);
 			}else if(hcount==1){
 				String month=odto.getDaily();
 				int monthly_total=odto.getDaily_total();
 				jObject.addProperty("month", month);
 				jObject.addProperty("monthly_total",monthly_total);
-				//System.out.println(month);
-				//System.out.println(monthly_total);
+				System.out.println(month);
+				System.out.println(monthly_total);
 			}
 			
 			jarray.add(jObject);

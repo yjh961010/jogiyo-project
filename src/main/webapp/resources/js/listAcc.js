@@ -55,7 +55,7 @@ function accList(){
 //              item.Name + "</td><td>" + item.Mail + "</td><td>" + item.Phone + "</td><td>" + 
 //              item.Grade + "</td><td width='15%'><button onclick='editUser(\"" + item.Id + "\")'>수정</button>&nbsp<button onclick='deleteUser(\"" + item.Id + "\")'>삭제</button></td></tr>";
 				var row = "<tr><td>" + item.Id + "</td><td>" + item.Name + "</td><td>" + item.Mail + "</td><td>" + item.Phone + "</td><td>" + 
-                item.Grade + "</td><td width='15%'><button onclick='deleteUser(\"" + item.Id + "\")'>삭제</button></td></tr>";
+                item.Grade + "</td><td width='15%'><button class='btn btn-search' onclick='deleteUser(\"" + item.Id + "\")'>삭제</button></td></tr>";
 				$("#accountTable").append(row);
             });
 		},

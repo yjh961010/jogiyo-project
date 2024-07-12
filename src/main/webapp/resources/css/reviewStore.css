@@ -7,14 +7,22 @@ body {
     padding: 0;
     color: #white;
 }
+.content-wrapper {
+    text-align: center; /* Center align content */
+    margin-top: 10px; /* Adjust as needed */
+    width: 70%; /* Adjust width according to your layout */
+    margin: 0 auto; /* Center horizontally */
+    padding-left: 20px; /* Add left padding to shift content to the right */
+    padding-right: 20px; /* Add right padding for symmetry */
+}
 .store-container2 {
      justify-content: center;
      align-items: flex-start;
      min-height: 100vh;
-
+     align: center;
 }
 .container {
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
     color: #white;
 }
@@ -23,6 +31,7 @@ h1 {
     margin-bottom: 20px;
     font-weight: bold;  
     font-family: 'Gothic A1';
+    text-align: center;
 }
 .pagination {
     margin: 20px 0;
@@ -149,19 +158,6 @@ td button {
     text-align: center; /* 텍스트 가운데 정렬 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
-
-.toolbar ul {
-    list-style: none; /* 리스트 스타일 제거 */
-    padding: 0;
-    margin: 0;
-    display: flex; /* 플렉스 박스를 사용하여 가로 정렬 */
-    justify-content: center; /* 가운데 정렬 */
-}
-
-.toolbar li {
-    margin: 0 50px; /* 리스트 항목 간의 간격 */
-}
-
 .toolbar a {
     text-decoration: none; /* 링크 밑줄 제거 */
     color: #333; /* 링크 색상 */
@@ -170,7 +166,16 @@ td button {
     border-radius: 5px; /* 모서리 둥글게 */
     transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 효과 */
 }
-
+.toolbar li {
+    margin: 0 50px; /* 리스트 항목 간의 간격 */
+}
+.toolbar ul {
+    list-style: none; /* 리스트 스타일 제거 */
+    padding: 0;
+    margin: 0;
+    display: flex; /* 플렉스 박스를 사용하여 가로 정렬 */
+    justify-content: center; /* 가운데 정렬 */
+}
 .toolbar a:hover {
     background-color: #ddd; /* 마우스 오버 시 배경색 변경 */
     color: #000; /* 마우스 오버 시 글자색 변경 */

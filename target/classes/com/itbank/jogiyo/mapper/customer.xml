@@ -148,9 +148,11 @@
    <select id="checkCoupon" parameterType="map" resultType="int"> 
    SELECT COUNT(*) FROM jusercoupon WHERE id = #{id,jdbcType=VARCHAR} AND couponid = #{couponid,jdbcType=INTEGER} 
    </select>
-	<update id="updateBasketQty" parameterType="java.util.Map">
+    <update id="updateBasketQty" parameterType="java.util.Map">
        UPDATE jbasket SET qty = #{qty}, totprice= (SELECT (totprice/qty)*#{qty} FROM jbasket WHERE menuid = #{menuid}) WHERE menuid = #{menuid}
     </update>
-	
+	<delete id="userCouponDel" parameterType="map">
+       delete from jusercoupon where usercid = #{usercid,jdbcType=NUMERIC}
+   </delete>
 	
  </mapper>

@@ -19,16 +19,15 @@
 		update jnoti set subject = #{subject}, content = #{content} where notiid = #{notiid} 
 	</update>
 	<select id="indexNotice" resultType="noticeDTO">
-		SELECT * FROM ( SELECT * FROM jnoti ORDER BY TO_DATE(indate, 'yyyy-mm-dd hh24:mi:ss') DESC ) WHERE ROWNUM = 1
-<!--   
+SELECT * FROM ( SELECT * FROM jnoti ORDER BY TO_DATE(indate, 'yyyy-mm-dd hh24:mi:ss') DESC ) WHERE ROWNUM = 1
+<!--    
 		select *
 		from jnoti
 		order by to_date(indate, 'yyyy-mm-dd hh24:mi:ss') desc
 		fetch first 1 row only   오라클 11c 에서 fetch못읽음
 		
-		 -->
-
-	</select>
+		  -->
+</select>
 	<select id="countNotice" resultType="boolean">
 			select case
 	         when count(*) > 1 then 1
@@ -37,4 +36,19 @@
 	       end as result
 			from jnoti
 	</select>
+	<select id="getNotice" parameterType="map" resultType="noticeDTO">
+    <![CDATA[
+   SELECT * FROM (
+    SELECT ROWNUM AS rnum, R.* FROM (
+    SELECT * FROM jnoti ORDER BY indate DESC
+    ) R
+    WHERE ROWNUM <= #{endIndex}
+    ) WHERE rnum > #{startIndex}
+    ]]>
+   </select>
+    <select id="getNoticeCount" resultType="int">
+    SELECT COUNT(*) AS TOTAL_COUNT
+    FROM Jnoti
+    </select>
+	
  </mapper>

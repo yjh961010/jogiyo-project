@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<!-- 회원가입 페이지 -->
+<!-- 점주 회원가입 페이지 -->
 <jsp:include page="../header.jsp" />
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/joinMemberShip.css">
@@ -180,8 +180,7 @@
                 document.getElementById("p1").disabled = false;
                 document.getElementById("p2").disabled = false;
                 document.getElementById("p3").disabled = false;
-                
-                
+               
             } else {
                 // 인증 실패 메시지 표시
                 /* document.getElementById("message").innerHTML = "인증번호가 일치하지 않습니다. 다시 시도해 주세요."; */
@@ -198,6 +197,7 @@
                 document.getElementById("p1").disabled = true;
                 document.getElementById("p2").disabled = true;
                 document.getElementById("p3").disabled = true;
+               
      
             }
        }
@@ -221,10 +221,10 @@
 
 <div align="center" style="margin-top: 60px;">
 <div align="center" style="margin-top: 20px; margin-bottom: 20px;">
-<h1><span style="font-weight: bold; color:#fa0050; font-family: 'Gothic A1', sans-serif;">회원가입</span></h1>
+<h1><span style="font-weight: bold; color:#fa0050; font-family: 'Gothic A1', sans-serif;">점주 회원가입</span></h1>
 </div>
    <form name="f1" method="post" onsubmit="return check()"
-   action="/login/join_membership_ok.do" class="form-container">
+   action="/login/owner_membership_ok.do" class="form-container">
    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
      
          
@@ -244,6 +244,7 @@
             <div class="label-lo" >비밀번호</div>
             <div class="input"><input type="password" name="passwd" id="pw" title="비밀번호" disabled ></div>
       </div>
+      
       
      <div class="form-row" >
          <div class="label-lo" >이메일</div>
@@ -282,7 +283,7 @@
       
    <table style="position:relative; top:25px;">
       <tr>
-        <td><a href="https://kauth.kakao.com/oauth/authorize?client_id=faae190fd5bb60c910724b6781aeda60&redirect_uri=http://localhost:7080/login/join_membership.do&response_type=code&scope=talk_message"> <!--  onclick="kakao_btn()" -->
+        <td><a href="https://kauth.kakao.com/oauth/authorize?client_id=1892f5fb59d85cadf550e26ec6d0855a&redirect_uri=http://localhost:7080/login/owner_membership.do&response_type=code&scope=talk_message"> <!--  onclick="kakao_btn()" -->
          <img src="${pageContext.request.contextPath}/resources/img/kakao_login_medium_narrow.png"
                   alt="카카오 로그인"></a></td>
                  

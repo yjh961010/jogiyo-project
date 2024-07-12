@@ -9,8 +9,19 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/storeSales.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<div class="toolbar">
+      <ul>
+          <li><a href="/store/selectStore.do?storeid=${storeid}&storename=${storename}">주문목록</a></li>
+          <li><a href="/store/reviewStore.do?storeid=${storeid}&storename=${storename}">리뷰관리</a></li>
+          <li><a href="/store/storeMenu.do?storeid=${storeid}&storename=${storename}">메뉴관리</a></li>
+          <li><a href="/store/storeSales2.do?storeid=${storeid}&storename=${storename}">매출관리(기간별)</a></li>
+          <li><a href="/store/storeSales.do?storeid=${storeid}&storename=${storename}">매출관리(메뉴별)</a></li>
+          <li><a href="/store/addCate.do?storeid=${storeid}&storename=${storename}">카테고리추가</a></li>
+          <li><a href="/store/stopStore.do?storeid=${storeid}&storename=${storename}">가게일시정지</a></li>
+          <li><a href="/store/addCoupon.do?storeid=${storeid}&storename=${storename}">쿠폰추가하기</a></li>
+      </ul>
+   </div>
 <script type="text/javascript">
-
     function indateSales(){
         let date1=$("#date1").val();
         let date2=$("#date2").val();
@@ -163,19 +174,7 @@
     <input type="button" name="canBtn" id="canBtn" value="취소" style="background-color: white; color: #fa0050; border: none; padding: 5px 10px; margin-top: 10px;" onclick="cancelChart()">
 </div>
 <div class="content2">
-<div class="toolbar">
-<ul>
-         
-            <li><a href="/store/selectStore.do?storeid=${storeid}&storename=${storename}">주문목록</a></li>
-            <li><a href="/store/reviewStore.do?storeid=${storeid}&storename=${storename}">리뷰관리</a></li>
-            <li><a href="/store/storeMenu.do?storeid=${storeid}&storename=${storename}">메뉴관리</a></li>
-            <li><a href="/store/storeSales2.do?storeid=${storeid}&storename=${storename}">매출관리(기간별)</a></li>
-            <li><a href="/store/storeSales.do?storeid=${storeid}&storename=${storename}">매출관리(메뉴별)</a></li>
-            <li><a href="/store/addCate.do?storeid=${storeid}&storename=${storename}">카테고리추가</a></li>
-            <li><a href="/store/stopStore.do?storeid=${storeid}&storename=${storename}">가게일시정지</a></li>
-            <li><a href="/store/addCoupon.do?storeid=${storeid}&storename=${storename}">쿠폰추가하기</a></li>
-        </ul>
-</div>
+
 <div id="canvasDiv" style="display: flex; justify-content: center;">
     <canvas id="logNameChart" style="width: 600px; height: 500px;"></canvas>
     <canvas id="logNameChart2" style="width: 600px; height: 500px;"></canvas>
