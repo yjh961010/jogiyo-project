@@ -460,7 +460,7 @@ public class StoreController {
 		String storename = req.getParameter("storename");
 		int res = storemapper.deleteStore(storename);
 		if(res>0) {
-			req.setAttribute("url", "/store/listStore.do");
+			req.setAttribute("url", "/store/ListStore.do");
 			req.setAttribute("msg", "가게삭제완료");
 		}
 		return "message";
