@@ -4,20 +4,20 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/addCate.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    let ck = false;
+let ck = false;
 
-    function check() {
-        const jfrm = document.f;
-        let length = jfrm.length - 2;
-        for (let i = 0; i < length; i++) {
-            if (jfrm[i].value == "" || jfrm[i].value == null) {
-                alert(jfrm[i].title + "를 입력해주세요.");
-                jfrm[i].focus();
-                return false;
-            }
+function check() {
+    const jfrm = document.f;
+    let length = jfrm.length - 4;
+    for (let i = 0; i < length; i++) {
+        if (jfrm[i].value == "" || jfrm[i].value == null) {
+            alert(jfrm[i].title + "를 입력해주세요.");
+            jfrm[i].focus();
+            return false;
         }
-        return true;
     }
+    return true;
+}
 </script>
 
 <div class="store-container2">

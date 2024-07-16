@@ -114,14 +114,14 @@ public class StoreController {
 		public String MyInfo(HttpServletRequest req) {
 		return "store/MyInfo";
 	}
-
-	/*
-	 * @RequestMapping("/store/test.do") public String test(HttpServletRequest req)
-	 * { PropertyReader reader = new PropertyReader(); String key =
-	 * reader.getProperty("kakao_key"); req.setAttribute("address",
-	 * "서울 종로구 삼일대로 394"); req.setAttribute("key", key); return
-	 * "store/kakaomaptest"; }
-	 */
+	@RequestMapping("/store/test.do")
+		public String test(HttpServletRequest req) {
+		PropertyReader reader = new PropertyReader();
+		String key = reader.getProperty("kakao_key");
+		req.setAttribute("address", "서울 종로구 삼일대로 394");
+		req.setAttribute("key", key);
+		return "store/kakaomaptest";
+	}
 	@RequestMapping("/store/selectStore.do")
 		public String selectStore(HttpServletRequest req) {
 		String storename = req.getParameter("storename");
@@ -329,7 +329,6 @@ public class StoreController {
 		req.setAttribute("cateList", cateList);
 		req.setAttribute("getMenu", getMenu);
 		req.setAttribute("storename", storename);
-		req.setAttribute("storeid", storeid);
 		return "store/editMenu";
 	}
 	@RequestMapping(value="/store/editMenuPro.do" ,method=RequestMethod.POST)

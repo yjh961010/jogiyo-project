@@ -31,8 +31,7 @@ h1 {
     flex: 1;
     padding: 0px;
     text-align: center;
-    margin-right: 720px;
-    display: flex;
+    margin-right: 0px;
     justify-content: flex-start;
 }
 .content2 {
@@ -40,7 +39,6 @@ h1 {
     padding: 0px;
     text-align: center;
     margin-right: 0px;
-    display: flex;
     justify-content: flex-start;
 }
 .toolbar {

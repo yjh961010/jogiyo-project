@@ -25,9 +25,9 @@
 
 
 
-	<div class="add">
+	<div class="add-container2">
 		
-		<div class="content2">
+		
 		<div class="toolbar">
 <ul>
            
@@ -41,6 +41,7 @@
             <li><a href="/store/addCoupon.do?storeid=${storeid}&storename=${storename}">쿠폰추가하기</a></li>
         </ul>
 </div>
+<div class="content2">
 <div class="addMenu">
 <h2>메뉴 추가페이지</h2>
  			
@@ -86,7 +87,5 @@
 			</form>
  		</div>
  		</div>
-		</body>
 	</div>
-</html>
 <jsp:include page="../footer.jsp"/>

@@ -7,15 +7,15 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/storeInfo.css">
 <script>
 function editStore(storeid){
-	var confirmed= confirm('해당 가게로 이동하시겠습니까?');
-	if(confirmed){
-	//var storeid = document.getElementById('storeid').value;
-	location.href="/store/editStore.do?storeid="+storeid;
-	return true;
-	}else{
-		return false;
-	}
-	
+   var confirmed= confirm('해당 가게로 이동하시겠습니까?');
+   if(confirmed){
+   //var storeid = document.getElementById('storeid').value;
+   location.href="/store/editStore.do?storeid="+storeid;
+   return true;
+   }else{
+      return false;
+   }
+   
 }
 </script>
 <div class="container">

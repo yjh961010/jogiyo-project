@@ -2,11 +2,8 @@
 <!-- 가게선택해서 수정하는페이지 -->
 <jsp:include page="../header.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/addStore.css">
-</head>
-<body>
+
 <script>
     
     function check() {
@@ -14,27 +11,29 @@
         let length = jfrm.length -3;
         for (let i = 0; i < length; i++) {
             if (jfrm[i].value == "" || jfrm[i].value == null) {
-            	alert(jfrm[i].getAttribute('title') + "를 입력해주세요.");
+               alert(jfrm[i].getAttribute('title') + "를 입력해주세요.");
                 jfrm[i].focus();
                 return false;
             }
         }
         return true;
     }
-    
+      
 </script>
+<div align="center" style="margin-top: 80px;">
+    <h1><span style="font-weight: bold; color:#fa0050; font-family: 'Gothic A1', sans-serif;">가게 정보</span></h1>
+    <div align="center" style="margin-top: 40px;">
 <div class="my-page-container">
-    <h2>가게정보</h2>
     <c:forEach var="dto" items="${findStore}">
         <form name="f" action="/store/editStorePro.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <input type="hidden" name="storeid" value="${dto.storeid}">
             <input type="hidden" name="img" value="${dto.img}">
             
-            <label for="storename" class="my-page-label">가게이름:</label>
+            <label for="storename" class="my-page-label">가게이름</label>
             <input type="text" id="storename" value="${dto.storename}" title="가게이름" name="storename" class="my-page-input">
-            
-            <label for="cateid" class="my-page-label">카테고리:</label>
+            <br>
+            <label for="cateid" class="my-page-label">카테고리</label>
             <select name="cateid" id="cateid" class="my-page-input" title="카테고리">
                 <option value="90001" <c:if test="${dto.cateid eq '90001'}">selected</c:if>>한식</option>
                 <option value="90002" <c:if test="${dto.cateid eq '90002'}">selected</c:if>>피자/양식</option>
@@ -44,26 +43,26 @@
                 <option value="90006" <c:if test="${dto.cateid eq '90006'}">selected</c:if>>야식</option>
                 <option value="90007" <c:if test="${dto.cateid eq '90007'}">selected</c:if>>분식</option>
             </select>
-            
-            <label for="storecontent" class="my-page-label" >가게설명:</label>
+            <br>
+            <label for="storecontent" class="my-page-label" >가게설명</label>
             <textarea id="storecontent" rows="5" cols="20" name="storecontent" class="my-page-input" title="가게설명">${dto.storecontent}</textarea>
-            
-            <label for="id" class="my-page-label">점주ID:</label>
+            <br>
+            <label for="id" class="my-page-label">점주ID</label>
             <input type="text" id="id" value="${dto.id}" readonly="readonly" class="my-page-input" title="점주ID">
-            
-            <label for="postcode" class="my-page-label">우편번호:</label>
+            <br>
+            <label for="postcode" class="my-page-label">우편번호</label>
             <input type="text" name="postcode" id="postcode" placeholder="우편번호" value="${dto.postcode}" class="my-page-input" title="우편번호">
             <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-            
-            <label for="address" class="my-page-label">주소:</label>
+            <br>
+            <label for="address" class="my-page-label">주소</label>
             <input type="text" name="address" id="address" placeholder="주소" value="${dto.address}" class="my-page-input" title="주소"><br>
-            
-            <label for="detailAddress" class="my-page-label">상세주소:</label>
+            <br>
+            <label for="detailAddress" class="my-page-label">상세주소</label>
             <input type="text" name="detailaddress" id="detailAddress" placeholder="상세주소" value="${dto.detailaddress}" class="my-page-input" title="상세주소">
-            
-            <label for="extraAddress" class="my-page-label">참고항목:</label>
+            <br>
+            <label for="extraAddress" class="my-page-label">참고항목</label>
             <input type="text" name="extraaddress" id="extraAddress" placeholder="참고항목" value="${dto.extraaddress}" class="my-page-input" title="참고항목"> 
-            
+            <br>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
             <script>
                 function execDaumPostcode() {
@@ -98,18 +97,17 @@
                 }
             </script>
             
-            <label class="my-page-label">가게 사진:</label>
+            <label class="my-page-label">가게 사진</label>
             <img src="${pageContext.request.contextPath}/resources/img/${dto.img}" width="100" height="100"><br>
             
-            <label for="file" class="my-page-label">가게 이미지 수정하기:</label>
+            <label for="file" class="my-page-label">가게 이미지 수정하기</label>
             <input type="file" name="file" id="file" class="my-page-input">
             
             <div align="center">
                 <input type="submit" value="수정" class="my-page-button">
                 <input type="reset" value="취소" class="my-page-button">
             </div>
-            <br>
-            <br>
+            
         </form>
         <form name="ff" action="/store/deleteStore.do">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -121,5 +119,3 @@
     </c:forEach>
 </div>
 <jsp:include page="../footer.jsp"/>
-</body>
-</html>

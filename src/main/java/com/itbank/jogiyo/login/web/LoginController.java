@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.itbank.jogiyo.dto.LoginDTO;
 import com.itbank.jogiyo.login.service.LoginMapper;
+import com.itbank.jogiyo.properties.PropertyReader;
 
 @Controller
 public class LoginController {
@@ -46,6 +47,11 @@ public class LoginController {
    @RequestMapping("/login/join_membership.do")
       public String join_membership(HttpServletRequest req) {
          int random = (int)(Math.random() * 10000);
+         PropertyReader reader = new PropertyReader();
+         String redirect_url = reader.getProperty("redirect_url");
+ 		 String kakao_login = reader.getProperty("kakao_login");
+ 		 req.setAttribute("redirect_url", redirect_url);
+ 		 req.setAttribute("kakao_login", kakao_login);
          req.setAttribute("random", random);
          return "/login/join_membership";
       }
@@ -53,6 +59,11 @@ public class LoginController {
    @RequestMapping("/login/id_find.do")
    public String id_find(HttpServletRequest req, LoginDTO dto) {
        int random = (int)(Math.random() * 10000);
+       PropertyReader reader = new PropertyReader();
+       String redirect_url = reader.getProperty("redirect_url");
+	   String kakao_login = reader.getProperty("kakao_login");
+	   req.setAttribute("redirect_url", redirect_url);
+	   req.setAttribute("kakao_login", kakao_login);
          req.setAttribute("random", random);
       return "login/id_find";
    }
@@ -90,6 +101,11 @@ public class LoginController {
       List<LoginDTO> find = loginmapper.listaccount();
       req.setAttribute("find", find);
        int random = (int)(Math.random() * 10000);
+       PropertyReader reader = new PropertyReader();
+       String redirect_url = reader.getProperty("redirect_url");
+		 String kakao_login = reader.getProperty("kakao_login");
+		 req.setAttribute("redirect_url", redirect_url);
+		 req.setAttribute("kakao_login", kakao_login);
          req.setAttribute("random", random);
        
       return "/login/pw_find";
@@ -119,10 +135,10 @@ public class LoginController {
       System.out.println(phone1+ phone2+ phone3);
       
       if (pfind != null) {
-         req.setAttribute("msg", "비밀번호를 찾았습니다!");
+         req.setAttribute("msg", "비밀번호 변경 페이지로 이동합니다.");
          req.setAttribute("url", "/login/pw_find_result.do?id="+id);
       }else {
-         req.setAttribute("msg", "입력하신 정보와 일치하는 비밀번호가 없습니다.");
+         req.setAttribute("msg", "입력하신 정보와 일치하지 않습니다.");
          req.setAttribute("url", "login.do");
       }
       return "message";
@@ -195,6 +211,11 @@ public class LoginController {
    @RequestMapping("/login/owner_membership.do")
       public String owner_membership(HttpServletRequest req) {
          int random = (int)(Math.random() * 10000);
+         PropertyReader reader = new PropertyReader();
+         String redirect_url = reader.getProperty("redirect_url");
+ 		 String kakao_login = reader.getProperty("kakao_login");
+ 		 req.setAttribute("redirect_url", redirect_url);
+ 		 req.setAttribute("kakao_login", kakao_login);
          req.setAttribute("random", random);
          return "/login/owner_membership";
       }

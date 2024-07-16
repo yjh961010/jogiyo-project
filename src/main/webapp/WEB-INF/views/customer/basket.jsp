@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/basket.css">
-<jsp:include page="../js/basket_js.jsp" />
+
 
 <div class="order-table-container">
         <div class="order-header">
@@ -43,7 +43,7 @@
 							<button class="quantity_btn minus_btn" onclick="minusQty(${loop.index})">-</button>
 							<input type="text" value="${ba.qty}" class="quantity_input" id="bqty${loop.index}">
 							<button class="quantity_btn plus_btn"  onclick="plusQty(${loop.index})">+</button>
-							<a class="quantity_modify_btn" onclick="updateQuantity(${loop.index}, ${ba.menuid})">변경</a>
+							<a class="quantity_modify_btn" onclick="updateQuantity(${loop.index}, ${ba.basketid})">변경</a>
 						</div>  
 					</td>
 
@@ -101,125 +101,5 @@
 	</tr>
 </table>
 </div>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-function execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete : function(data) {
-            var addr = ''; // 주소 변수
-            var extraAddr = ''; // 참고항목 변수
-
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                addr = data.jibunAddress;
-            }
-
-            if (data.userSelectedType === 'R') {
-                if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-                    extraAddr += data.bname;
-                }
-                if (data.buildingName !== '' && data.apartment === 'Y') {
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                if (extraAddr !== '') {
-                    extraAddr = ' (' + extraAddr + ')';
-                }
-                document.getElementById("extraAddress").value = extraAddr;
-            } else {
-                document.getElementById("extraAddress").value = '';
-            }
-
-            document.getElementById("postcode").value = data.zonecode;
-            document.getElementById("address").value = addr;
-            document.getElementById("detailAddress").focus();
-        }
-    }).open();
-}
-
-
-<%-- 버튼 + - 추가함수 --%>
-function plusQty(index) {
-    let ogQty = document.getElementById('bqty' + index).value;
-    let chQty = parseInt(ogQty) + 1;
-    document.getElementById('bqty' + index).value = chQty;
-}
-
-function minusQty(index) {
-    let ogQty = document.getElementById('bqty' + index).value;
-    let chQty = parseInt(ogQty);
-
-    if (chQty > 1) {
-        chQty--;
-        document.getElementById('bqty' + index).value = chQty;
-    }
-}
-
-function getSelectedCouponContentNumber() {
-    const selectedCoupon = document.querySelector('input[name="coupon"]:checked');
-    if (selectedCoupon) {
-        // 쿠폰의 coucontent에서 숫자만 추출
-        const content = selectedCoupon.getAttribute('data-content');
-        const number = content.match(/\d+/);
-        return number ? number[0] : null;
-    }
-    return null;
-}
-
-//수량 변경 함수 (서버에 업데이트 요청)
-function updateQuantity(index, menuid) {
-    let qty = document.getElementById('bqty' + index).value;
-    var csrfToken = $("meta[name='_csrf']").attr("content");
-	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
-    $.ajax({
-        url: '/customer/updateBasketQty.ajax',
-        type: 'POST',
-        beforeSend : function(xhr) {
-			// AJAX 요청 헤더에 CSRF 토큰 추가
-			xhr.setRequestHeader(csrfHeader, csrfToken);
-		},
-        data: {
-            menuid: menuid,
-            qty: qty
-        },
-         
-        success: function(response) {
-            if (response === 'success') {
-                alert('수량이 업데이트되었습니다.');
-                location.reload();
-            } else {
-                alert('수량 업데이트에 실패했습니다.');
-            }
-        },
-        error: function(xhr, status, error) {
-            alert('수량 업데이트에 실패했습니다.');
-        
-    }})
-    };
-
-    function viewStore(id) {
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/customer/viewStore.do';
-
-        var idInput = document.createElement('input');
-        idInput.type = 'hidden';
-        idInput.name = 'storeid';
-        idInput.value = id;
-        form.appendChild(idInput);
-        
-        var csrfToken = $("meta[name='_csrf']").attr("content");
-        
-        var idInput2 = document.createElement('input');
-        idInput2.type = 'hidden';
-        idInput2.name = '_csrf';
-        idInput2.value = csrfToken;
-        form.appendChild(idInput2);
-
-        document.body.appendChild(form);
-        form.submit();
-    }
-
-
-</script>
+<jsp:include page="../js/basket_js.jsp" />
 <jsp:include page="../footer.jsp" />

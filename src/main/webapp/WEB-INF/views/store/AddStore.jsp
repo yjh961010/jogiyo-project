@@ -19,34 +19,34 @@ function check() {
     return true;
 }
 </script>
-
-
+<div align="center" style="margin-top: 80px;">
+    <h1><span style="font-weight: bold; color:#fa0050; font-family: 'Gothic A1', sans-serif;">가게 추가</span></h1>
+    <div align="center" style="margin-top: 40px;">
 <div class="my-page-container" >
-	<h1 class="store-h1">가게 추가</h1>
     <form name="f" action="/store/AddStore.do" method="POST" enctype="multipart/form-data" onsubmit="return check()">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         
             
-                <label for="storename" class="my-page-label">가게이름:</label>
-               <input type="text" name="storename" title="가게이름" class="my-page-input" >
+                <label for="storename" class="my-page-label">가게이름</label>
+               <input type="text" name="storename" title="가게이름" class="my-page-input" placeholder="가게 이름 입력(필수)" >
            
            
-                <label for="cateid" class="my-page-label" >카테고리:</label>
+                <label for="cateid" class="my-page-label" >카테고리</label>
                
                     <select name="cateid" title="카테고리" class="select">
                     <c:forEach items="${clist}" var="cate">
                         <option value="${cate.cateid}">${cate.catename}</option>
                     </c:forEach>
                     </select>
-
-              <label for="cateid" class="my-page-label"> 가게설명 :</label>
-                <textarea rows="5" cols="30" name="storecontent" title="가게설명"></textarea>
+<br></br>
+              <label for="cateid" class="my-page-label"> 가게설명 </label>
+                <textarea rows="5" cols="30" name="storecontent" title="가게설명" placeholder="가게 설명을 입력하시오."></textarea>
            
-            
-              <label for="id" class="my-page-label"> ID :</label>
+            <br></br>
+              <label for="id" class="my-page-label"> ID </label>
                 <input type="text" name="id" value="${jId}" readonly class="my-page-input">
             
-                 <label for="address" class="my-page-label"> 가게위치 :</label>
+                 <label for="address" class="my-page-label"> 가게위치 </label>
                
                     <input type="text" name="postcode" id="postcode" placeholder="우편번호" title="우편번호" class="my-page-input">
                     <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="my-page-button">
@@ -54,7 +54,7 @@ function check() {
                     <input type="text" name="detailaddress" id="detailAddress" placeholder="상세주소" title="상세주소" class="my-page-input">
                     <input type="text" name="extraaddress" id="extraAddress" placeholder="참고항목" title="참고항목" class="my-page-input">
          
-             <label for="file" class="my-page-label"> 가게사진 :</label>
+             <label for="file" class="my-page-label"> 가게사진 </label>
                 <input type="file" name="file" title="가게사진" class="my-page-input">
           
                 <!--   <label for="couponid" class="my-page-label"> 쿠폰 (없으면0을 입력해주세요):</label>

@@ -14,7 +14,8 @@
 <body>
 <div class="store-container2">
     <div class="toolbar">
-         <ul>
+        <ul>
+            
             <li><a href="/store/selectStore.do?storeid=${storeid}&storename=${storename}">주문목록</a></li>
             <li><a href="/store/reviewStore.do?storeid=${storeid}&storename=${storename}">리뷰관리</a></li>
             <li><a href="/store/storeMenu.do?storeid=${storeid}&storename=${storename}">메뉴관리</a></li>

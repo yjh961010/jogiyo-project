@@ -16,7 +16,7 @@
                 <option value="${cate.cateid}" >${cate.catename}</option>
             </c:forEach>
         </select>
-        <input type="button" name="searchBtn" id="searchBtn" value="선택" onclick="cateList()">
+        <input type="button" name="searchBtn" id="searchBtn" value="선택" onclick="cateList()" class="s_btn">
         </div>
         </c:if>
         <div class="listings" id="storeList" >
